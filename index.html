@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Fai Refriandi — Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio Fai Refriandi — Product-focused Developer"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Lottie web component -->
+    <script
+      type="module"
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+    ></script>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-container">
+        <div class="loading-counter" id="loading-counter">0%</div>
+        <div class="loading-bar">
+          <div class="loading-progress" id="loading-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header" role="banner" data-animate>
+      <div class="container">
+        <a href="#" class="header-logo" aria-label="Beranda / Atas">FR.</a>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          title="Ganti tema"
+          data-animate
+        >
+          🌙
+        </button>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <header class="profile" data-animate>
+        <div class="avatar" data-animate>
+          <img src="assets/profile.jpg" alt="Fai Refriandi" loading="lazy" />
+        </div>
+        <div>
+          <div class="name-row" data-animate>
+            <h1>Fai Refriandi</h1>
+            <dotlottie-player
+              src="https://lottie.host/07f05192-a1b7-4133-a26b-19860df7de6a/CEA68admAD.lottie"
+              autoplay
+              loop
+              speed="1"
+            >
+            </dotlottie-player>
+          </div>
+          <div class="subtitle" data-animate>Product-focused Developer</div>
+        </div>
+      </header>
+
+      <!-- About -->
+      <section>
+        <h2 data-animate>Tentang</h2>
+        <div id="about" class="about-text" data-animate>
+          <p>
+            Halo, saya Fai Refriandi. Seorang Developer yang berfokus pada
+            pengembangan aplikasi mobile dan website yang interaktif. Saya terus
+            belajar dan mengembangkan keterampilan saya untuk menjadi seorang
+            Developer yang profesional.
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section>
+        <h2 data-animate>Proyek</h2>
+        <div class="timeline" id="projects" data-animate>
+          <!-- Project 1 -->
+          <article
+            class="row project"
+            data-animate
+            data-project-title="Tafsirmate — Aplikasi Tafsir Al-Qur'an"
+            data-project-period="2025"
+            data-project-image="assets/project_1.jpg"
+            data-project-description="Aplikasi mobile dengan fitur asisten AI untuk pembelajaran dasar tafsir Al-Quran. Aplikasi ini dirancang untuk membantu pengguna memahami makna dan konteks ayat-ayat Al-Qur'an dengan bantuan teknologi kecerdasan buatan. Fitur utama meliputi pencarian ayat, tafsir interaktif, dan asisten AI yang dapat menjawab pertanyaan seputar tafsir."
+            data-project-tech="Kotlin,Android SDK,XML,Firebase"
+          >
+            <div class="thumb" aria-hidden="true">
+              <div class="imgbox">
+                <img
+                  loading="lazy"
+                  src="assets/project_1.jpg"
+                  alt="Preview Tafsirmate — Aplikasi Tafsir Al-Qur'an"
+                />
+              </div>
+              <div class="caption">Preview</div>
+            </div>
+            <div>
+              <div class="period">2025</div>
+              <div class="role">Tafsirmate — Aplikasi Tafsir Al-Qur'an</div>
+              <div class="desc">
+                Aplikasi mobile dengan asisten AI untuk pembelajaran dasar
+                tafsir Al-Quran.
+              </div>
+              <div class="chips">
+                <span class="chip" data-animate>Kotlin</span>
+                <span class="chip" data-animate>Android SDK</span>
+                <span class="chip" data-animate>XML</span>
+                <span class="chip" data-animate>Firebase</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 (punya link, bungkus CTA di judul) -->
+          <article
+            class="row project"
+            data-animate
+            data-project-title="Victory National Open Taekwondo Championship"
+            data-project-period="2025"
+            data-project-image="assets/project_2.png"
+            data-project-link="https://demo-victory-taekwondo.netlify.app/"
+            data-project-description="Website Event Victory National Open Taekwondo Championship. Website ini dibuat untuk mempromosikan dan memberikan informasi lengkap mengenai event kejuaraan taekwondo tingkat nasional. Fitur meliputi informasi event, pendaftaran peserta, jadwal pertandingan, dan galeri foto."
+            data-project-tech="HTML,Javascript,Tailwind CSS"
+          >
+            <div class="thumb" aria-hidden="true">
+              <div class="imgbox">
+                <img
+                  loading="lazy"
+                  src="assets/project_2.png"
+                  alt="Preview Victory National Open Taekwondo Championship"
+                />
+              </div>
+              <div class="caption">Preview</div>
+            </div>
+            <div>
+              <div class="period">2025</div>
+              <div class="role">
+                Victory National Open Taekwondo Championship
+              </div>
+              <div class="desc">
+                Website Event Victory National Open Taekwondo Championship.
+              </div>
+              <div class="chips">
+                <span class="chip" data-animate>HTML</span>
+                <span class="chip" data-animate>Javascript</span>
+                <span class="chip" data-animate>Tailwind CSS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article
+            class="row project"
+            data-animate
+            data-project-title="Bandung Air Quality Tracker"
+            data-project-period="2024"
+            data-project-image="assets/project_4.jpg"
+            data-project-link="https://github.com/FaiRefriandi/BandungAirQuality"
+            data-project-description="Aplikasi mobile untuk melihat informasi kualitas udara di daerah Kota Bandung. Aplikasi ini menyediakan data real-time mengenai kualitas udara, indeks polusi, dan rekomendasi kesehatan berdasarkan kondisi udara saat ini. Pengguna dapat memantau kualitas udara di berbagai lokasi di Kota Bandung."
+            data-project-tech="Kotlin,Android SDK,XML,Firebase"
+          >
+            <div class="thumb" aria-hidden="true">
+              <div class="imgbox">
+                <img
+                  loading="lazy"
+                  src="assets/project_4.jpg"
+                  alt="Preview Bandung Air Quality Tracker"
+                />
+              </div>
+              <div class="caption">Preview</div>
+            </div>
+            <div>
+              <div class="period">2024</div>
+              <div class="role">Bandung Air Quality Tracker</div>
+              <div class="desc">
+                Aplikasi mobile untuk melihat informasi kualitas udara di daerah
+                Kota Bandung.
+              </div>
+              <div class="chips">
+                <span class="chip" data-animate>Kotlin</span>
+                <span class="chip" data-animate>Android SDK</span>
+                <span class="chip" data-animate>XML</span>
+                <span class="chip" data-animate>Firebase</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article
+            class="row project"
+            data-animate
+            data-project-title="Kidslamic"
+            data-project-period="2024"
+            data-project-image="assets/project_3.png"
+            data-project-link="https://kidslamic.netlify.app"
+            data-project-description="Website Al-Qur'an dan jadwal shalat yang dirancang untuk anak-anak. Website ini menyediakan fitur membaca Al-Qur'an dengan terjemahan, jadwal waktu shalat berdasarkan lokasi, dan konten edukatif islami yang ramah anak. Interface yang menarik dan mudah digunakan membuat anak-anak lebih tertarik untuk belajar."
+            data-project-tech="HTML,PHP,Javascript,Bootstrap CSS"
+          >
+            <div class="thumb" aria-hidden="true">
+              <div class="imgbox">
+                <img
+                  loading="lazy"
+                  src="assets/project_3.png"
+                  alt="Preview Kidslamic"
+                />
+              </div>
+              <div class="caption">Preview</div>
+            </div>
+            <div>
+              <div class="period">2024</div>
+              <div class="role">Kidslamic</div>
+              <div class="desc">Website Al-Qur'an dan jadwal shalat</div>
+              <div class="chips">
+                <span class="chip" data-animate>HTML</span>
+                <span class="chip" data-animate>PHP</span>
+                <span class="chip" data-animate>Javascript</span>
+                <span class="chip" data-animate>Bootstrap CSS</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Education / Pengalaman -->
+      <section>
+        <h2 data-animate>Pendidikan</h2>
+        <div class="timeline" id="education" data-animate>
+          <article class="row" data-animate>
+            <div class="period">2018 - 2021</div>
+            <div>
+              <div class="role">Teknik Komputer Jaringan</div>
+              <div class="desc">SMK Negeri 2 Bandung</div>
+            </div>
+          </article>
+          <article class="row" data-animate>
+            <div class="period">2021 - 2025</div>
+            <div>
+              <div class="role">Teknik Informatika</div>
+              <div class="desc">Universitas Komputer Indonesia</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section>
+        <h2 data-animate>Kontak</h2>
+        <div id="contact" class="contact-list" data-animate>
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <div class="value">
+              <a href="mailto:frefriandi@gmail.com">frefriandi@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Github</div>
+            <div class="value">
+              <a
+                href="https://github.com/fairefriandi"
+                target="_blank"
+                rel="noopener"
+                >Fai Refriandi</a
+              >
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="label">LinkedIn</div>
+            <div class="value">
+              <a
+                href="https://linkedin.com/in/fairefriandi"
+                target="_blank"
+                rel="noopener"
+                >Fai Refriandi</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Tutup modal">×</button>
+        <div class="modal-body">
+          <div class="modal-image-container">
+            <img id="modal-image" src="" alt="" />
+          </div>
+          <div class="modal-info">
+            <div class="modal-period" id="modal-period"></div>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <p class="modal-description" id="modal-description"></p>
+            <div class="modal-tech" id="modal-tech"></div>
+            <div
+              class="modal-link-container"
+              id="modal-link-container"
+              style="display: none"
+            >
+              <a
+                id="modal-link"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                class="modal-link-btn"
+              >
+                Lihat Proyek →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts (dipangkas) -->
+    <script src="script.js"></script>
+  </body>
+</html>
