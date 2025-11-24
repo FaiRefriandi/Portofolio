@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://frefriandi.netlify.app/sitemap.xml

@@ -6,12 +6,99 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <title>Fai Refriandi — Portfolio</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Fai Refriandi — Mobile & Web Developer | Portfolio</title>
+    <meta
+      name="title"
+      content="Fai Refriandi — Mobile & Web Developer | Portfolio"
+    />
     <meta
       name="description"
-      x
-      content="Portfolio Fai Refriandi — Product-focused Developer"
+      content="Halo guys! Saya Fai Refriandi, seorang Mobile & Web Developer yang berfokus pada pengembangan aplikasi Android dan website modern."
     />
+    <meta
+      name="keywords"
+      content="Fai Refriandi, Mobile Developer, Web Developer, Android Developer, Kotlin, JavaScript, Portfolio, Programmer Indonesia, Aplikasi Mobile, Website Development"
+    />
+    <meta name="author" content="Fai Refriandi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Indonesian" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://frefriandi.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Fai Refriandi — Mobile & Web Developer | Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio Fai Refriandi, seorang Mobile & Web Developer yang berfokus pada pengembangan aplikasi Android dan website modern."
+    />
+    <meta
+      property="og:image"
+      content="https://frefriandi.vercel.app/assets/profile.webp"
+    />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Fai Refriandi Portfolio" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://frefriandi.vercel.app/" />
+    <meta
+      property="twitter:title"
+      content="Fai Refriandi — Mobile & Web Developer | Portfolio"
+    />
+    <meta
+      property="twitter:description"
+      content="Portfolio Fai Refriandi, seorang Mobile & Web Developer yang berfokus pada pengembangan aplikasi Android dan website modern."
+    />
+    <meta
+      property="twitter:image"
+      content="https://frefriandi.vercel.app/assets/profile.webp"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://frefriandi.vercel.app/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Fai Refriandi",
+        "url": "https://frefriandi.vercel.app/",
+        "image": "https://frefriandi.vercel.app/assets/profile.webp",
+        "jobTitle": "Mobile & Web Developer",
+        "description": "Mobile & Web Developer yang berfokus pada pengembangan aplikasi Android dan website modern",
+        "knowsAbout": [
+          "Mobile Development",
+          "Web Development",
+          "Android",
+          "Kotlin",
+          "PHP",
+          "JavaScript",
+          "Firebase"
+        ],
+        "sameAs": [
+          "https://github.com/fairefriandi",
+          "https://linkedin.com/in/fairefriandi"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universitas Komputer Indonesia"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Freelance"
+        }
+      }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,7 +146,7 @@
     <div class="wrap">
       <header class="profile" data-animate>
         <div class="avatar" data-animate>
-          <img src="assets/profile.jpg" alt="Fai Refriandi" loading="lazy" />
+          <img src="assets/profile.webp" alt="Fai Refriandi" loading="lazy" />
         </div>
         <div>
           <div class="name-row" data-animate>
@@ -97,42 +184,6 @@
           <article
             class="row project"
             data-animate
-            data-project-title="Tafsirmate — Aplikasi Tafsir Al-Qur'an"
-            data-project-period="2025"
-            data-project-image="assets/project_1.jpg"
-            data-project-description="Aplikasi mobile dengan fitur asisten AI untuk pembelajaran dasar tafsir Al-Quran. Aplikasi ini dirancang untuk membantu pengguna memahami makna dan konteks ayat-ayat Al-Qur'an dengan bantuan teknologi kecerdasan buatan. Fitur utama meliputi pencarian ayat, tafsir interaktif, dan asisten AI yang dapat menjawab pertanyaan seputar tafsir."
-            data-project-tech="Kotlin,Android SDK,XML,Firebase"
-          >
-            <div class="thumb" aria-hidden="true">
-              <div class="imgbox">
-                <img
-                  loading="lazy"
-                  src="assets/project_1.jpg"
-                  alt="Preview Tafsirmate — Aplikasi Tafsir Al-Qur'an"
-                />
-              </div>
-              <div class="caption">Preview</div>
-            </div>
-            <div>
-              <div class="period">2025</div>
-              <div class="role">Tafsirmate — Aplikasi Tafsir Al-Qur'an</div>
-              <div class="desc">
-                Aplikasi mobile dengan asisten AI untuk pembelajaran dasar
-                tafsir Al-Quran.
-              </div>
-              <div class="chips">
-                <span class="chip" data-animate>Kotlin</span>
-                <span class="chip" data-animate>Android SDK</span>
-                <span class="chip" data-animate>XML</span>
-                <span class="chip" data-animate>Firebase</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2  -->
-          <article
-            class="row project"
-            data-animate
             data-project-title="Victory National Open Taekwondo Championship"
             data-project-period="2025"
             data-project-image="assets/project_2.png"
@@ -162,6 +213,42 @@
                 <span class="chip" data-animate>HTML</span>
                 <span class="chip" data-animate>Javascript</span>
                 <span class="chip" data-animate>Tailwind CSS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2  -->
+          <article
+            class="row project"
+            data-animate
+            data-project-title="Tafsirmate — Aplikasi Tafsir Al-Qur'an"
+            data-project-period="2025"
+            data-project-image="assets/project_1.jpg"
+            data-project-description="Aplikasi mobile dengan fitur asisten AI untuk pembelajaran dasar tafsir Al-Quran. Aplikasi ini dirancang untuk membantu pengguna memahami makna dan konteks ayat-ayat Al-Qur'an dengan bantuan teknologi kecerdasan buatan. Fitur utama meliputi pencarian ayat, tafsir interaktif, dan asisten AI yang dapat menjawab pertanyaan seputar tafsir."
+            data-project-tech="Kotlin,Android SDK,XML,Firebase"
+          >
+            <div class="thumb" aria-hidden="true">
+              <div class="imgbox">
+                <img
+                  loading="lazy"
+                  src="assets/project_1.jpg"
+                  alt="Preview Tafsirmate — Aplikasi Tafsir Al-Qur'an"
+                />
+              </div>
+              <div class="caption">Preview</div>
+            </div>
+            <div>
+              <div class="period">2025</div>
+              <div class="role">Tafsirmate — Aplikasi Tafsir Al-Qur'an</div>
+              <div class="desc">
+                Aplikasi mobile dengan asisten AI untuk pembelajaran dasar
+                tafsir Al-Quran.
+              </div>
+              <div class="chips">
+                <span class="chip" data-animate>Kotlin</span>
+                <span class="chip" data-animate>Android SDK</span>
+                <span class="chip" data-animate>XML</span>
+                <span class="chip" data-animate>Firebase</span>
               </div>
             </div>
           </article>
@@ -227,7 +314,7 @@
             <div>
               <div class="period">2024</div>
               <div class="role">Kidslamic</div>
-              <div class="desc">Website Al-Qur'an dan jadwal shalat</div>
+              <div class="desc">Website Al-Qur'an dan jadwal shalat.</div>
               <div class="chips">
                 <span class="chip" data-animate>HTML</span>
                 <span class="chip" data-animate>PHP</span>

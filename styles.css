@@ -62,6 +62,8 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 html,
 body {
@@ -869,6 +871,10 @@ body.modal-open {
 @media (max-width: 768px) {
   .wrap {
     padding: calc(32px + var(--header-h)) 24px 80px;
+  }
+
+  .header-logo {
+    font-size: clamp(25px, 4vw, 35px);
   }
 
   body {
