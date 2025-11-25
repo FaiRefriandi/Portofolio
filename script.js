@@ -11,7 +11,7 @@
   const duration = 2000; // 2 seconds
   const startTime = performance.now();
 
-  // Easing function for smooth animation
+  // Easing function for smooth animation dahlah
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
   }
