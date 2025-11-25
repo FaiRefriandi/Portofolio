@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://frefriandi.netlify.app/sitemap.xml
+Sitemap: https://frefriandi.vercel.app/sitemap.xml
