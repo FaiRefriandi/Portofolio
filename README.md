@@ -1,6 +1,6 @@
 # Portofolio
 
-Inimah buat wengset portofoliooooooooo
+This in my portfolio website: https://fairstain.my.id
 
 ## Key Features & Benefits
 
