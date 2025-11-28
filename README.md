@@ -1,6 +1,6 @@
 # Portofolio
 
-This in my portfolio website: https://fairstain.my.id
+This is my portfolio website: https://fairstain.my.id
 
 ## Key Features & Benefits
 
