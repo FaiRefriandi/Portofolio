@@ -46,49 +46,10 @@
   requestAnimationFrame(animateCounter);
 })();
 
-// Toggle tema (dark/light)
+// Set default theme to light
 (function () {
   const root = document.documentElement;
-  const btn = document.getElementById("theme-toggle");
-
-  function applyIcon(mode) {
-    btn.textContent = mode === "light" ? "☀️" : "🌙";
-    btn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
-  }
-
-  function setTheme(mode) {
-    root.classList.add("theming");
-    if (mode === "light") root.setAttribute("data-theme", "light");
-    else root.removeAttribute("data-theme");
-
-    localStorage.setItem("theme", mode);
-    applyIcon(mode);
-    setTimeout(() => root.classList.remove("theming"), 420);
-  }
-
-  (function init() {
-    const saved = localStorage.getItem("theme");
-    if (saved) {
-      applyIcon(saved);
-      if (saved === "light") root.setAttribute("data-theme", "light");
-    } else {
-      const prefersLight = window.matchMedia(
-        "(prefers-color-scheme: light)"
-      ).matches;
-      if (prefersLight) {
-        root.setAttribute("data-theme", "light");
-        applyIcon("light");
-      } else {
-        applyIcon("dark");
-      }
-    }
-  })();
-
-  btn?.addEventListener("click", () => {
-    const isLight =
-      document.documentElement.getAttribute("data-theme") === "light";
-    setTheme(isLight ? "dark" : "light");
-  });
+  root.setAttribute("data-theme", "light");
 })();
 
 // Entrance animation
