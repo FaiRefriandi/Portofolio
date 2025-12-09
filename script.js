@@ -52,6 +52,51 @@
   root.setAttribute("data-theme", "light");
 })();
 
+// Smooth Infinite Marquee
+(function () {
+  const marqueeContainers = document.querySelectorAll(".tech-marquee-track");
+
+  marqueeContainers.forEach((container) => {
+    const content = container.querySelector(".tech-marquee-content");
+    if (!content) return;
+
+    // Clone the content multiple times for seamless loop
+    const clone1 = content.cloneNode(true);
+    const clone2 = content.cloneNode(true);
+    container.appendChild(clone1);
+    container.appendChild(clone2);
+
+    // Determine direction
+    const isReverse = container.classList.contains("mobile-track-rtl");
+    const speed =
+      container.classList.contains("mobile-track-ltr") ||
+      container.classList.contains("mobile-track-rtl")
+        ? 0.3
+        : 0.5;
+
+    let position = isReverse ? -content.offsetWidth : 0;
+
+    function animate() {
+      if (isReverse) {
+        position += speed;
+        if (position >= 0) {
+          position = -content.offsetWidth;
+        }
+      } else {
+        position -= speed;
+        if (position <= -content.offsetWidth) {
+          position = 0;
+        }
+      }
+
+      container.style.transform = `translate3d(${position}px, 0, 0)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  });
+})();
+
 // Entrance animation
 (function () {
   const reduceMotion = window.matchMedia(

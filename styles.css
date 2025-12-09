@@ -1010,15 +1010,19 @@ body.modal-open {
 .tech-marquee-track {
   display: flex;
   width: fit-content;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .tech-marquee-content {
   display: inline-flex;
   gap: 40px;
   align-items: center;
-  animation: marqueeScroll 30s linear infinite;
   will-change: transform;
   padding-right: 40px;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
 }
 
 .tech-item {
@@ -1049,15 +1053,6 @@ body.modal-open {
   pointer-events: none;
 }
 
-/* Marquee animation */
-@keyframes marqueeScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
 /* Mobile: 2 rows */
 @media (max-width: 768px) {
   .desktop-track {
@@ -1077,15 +1072,9 @@ body.modal-open {
   }
 
   .tech-marquee-mobile .tech-marquee-content {
-    animation: none;
-  }
-
-  .mobile-track-ltr .tech-marquee-content {
-    animation: marqueeScroll 20s linear infinite;
-  }
-
-  .mobile-track-rtl .tech-marquee-content {
-    animation: marqueeScrollReverse 20s linear infinite;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
   }
 
   .tech-item {
@@ -1097,16 +1086,6 @@ body.modal-open {
   .tech-marquee-content {
     gap: 30px;
     padding-right: 30px;
-  }
-}
-
-/* Reverse marquee for second row on mobile */
-@keyframes marqueeScrollReverse {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
   }
 }
 
