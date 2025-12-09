@@ -1010,20 +1010,15 @@ body.modal-open {
 .tech-marquee-track {
   display: flex;
   width: fit-content;
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
 
 .tech-marquee-content {
   display: inline-flex;
   gap: 40px;
   align-items: center;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 30s linear infinite;
   will-change: transform;
   padding-right: 40px;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-font-smoothing: antialiased;
 }
 
 .tech-item {
@@ -1056,14 +1051,13 @@ body.modal-open {
 
 /* Marquee animation */
 @keyframes marqueeScroll {
-  0% {
-    transform: translate3d(0, 0, 0);
+  from {
+    transform: translateX(0);
   }
-  100% {
-    transform: translate3d(calc(-100% - 40px), 0, 0);
+  to {
+    transform: translateX(-50%);
   }
 }
-
 /* Mobile: 2 rows */
 @media (max-width: 768px) {
   .desktop-track {
@@ -1083,17 +1077,15 @@ body.modal-open {
   }
 
   .tech-marquee-mobile .tech-marquee-content {
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    -webkit-font-smoothing: antialiased;
+    animation: none;
   }
 
   .mobile-track-ltr .tech-marquee-content {
-    animation: marqueeScroll 25s linear infinite;
+    animation: marqueeScroll 20s linear infinite;
   }
 
   .mobile-track-rtl .tech-marquee-content {
-    animation: marqueeScrollReverse 25s linear infinite;
+    animation: marqueeScrollReverse 20s linear infinite;
   }
 
   .tech-item {
@@ -1110,11 +1102,11 @@ body.modal-open {
 
 /* Reverse marquee for second row on mobile */
 @keyframes marqueeScrollReverse {
-  0% {
-    transform: translate3d(calc(-100% - 30px), 0, 0);
+  from {
+    transform: translateX(-50%);
   }
-  100% {
-    transform: translate3d(0, 0, 0);
+  to {
+    transform: translateX(0);
   }
 }
 
