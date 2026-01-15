@@ -139,6 +139,20 @@
   sectionObserver.observe(edu);
 })();
 
+// Header Logo Scroll to Top
+(function () {
+  const headerLogo = document.querySelector(".header-logo");
+  if (!headerLogo) return;
+
+  headerLogo.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+})();
+
 // Project Modal
 (function () {
   const modal = document.getElementById("project-modal");
