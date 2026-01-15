@@ -655,7 +655,7 @@ a.row {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 0 0 4px 0; /* Adjusted for visual centering */
   font-family: Arial, sans-serif;
   transition: transform 0.3s var(--ease), background 0.3s var(--ease);
 }
