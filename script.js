@@ -146,7 +146,8 @@
 
   headerLogo.addEventListener("click", (e) => {
     e.preventDefault();
-    window.scrollTo({
+    // Use documentElement since the page scrolls on html/body
+    document.documentElement.scrollTo({
       top: 0,
       behavior: "smooth",
     });
