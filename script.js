@@ -140,24 +140,28 @@
 })();
 
 // Header Logo Scroll to Top
-// Header Logo Scroll to Top
 (function () {
-  const headerLogo = document.querySelector(".header-logo");
-
-  if (headerLogo) {
-    headerLogo.addEventListener("click", (e) => {
+  document.addEventListener("click", (e) => {
+    // Use event delegation to ensure we catch the click
+    const headerLogo = e.target.closest(".header-logo");
+    if (headerLogo) {
       e.preventDefault();
+
+      // Try multiple scrolling methods to ensure one works
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-      // Fallback for some browsers if window.scrollTo doesn't catch
       document.documentElement.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    });
-  }
+      document.body.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  });
 })();
 
 // Project Modal
