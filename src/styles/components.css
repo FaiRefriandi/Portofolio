@@ -567,7 +567,11 @@
   transition: opacity var(--motion-duration-instant) var(--motion-ease), visibility var(--motion-duration-instant) var(--motion-ease);
   overscroll-behavior: contain;
 }
-.modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+.modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; animation: modal-fade 200ms var(--motion-ease); }
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .modal__backdrop { position: absolute; inset: 0; background: rgba(18, 18, 20, 0.58); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 0; padding: 0; cursor: pointer; }
 .modal__panel {
   position: relative; width: min(980px, 92vw); max-height: min(86vh, 820px); overflow: hidden;
@@ -575,6 +579,25 @@
   border: 1px solid var(--semantic-stroke-strong);
   border-radius: var(--radius-md);
   box-shadow: 0 16px 48px rgba(0,0,0,0.16);
+  /* resting (hidden) state for the exit transition */
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  transition:
+    opacity 220ms var(--motion-ease),
+    transform 220ms var(--motion-ease);
+}
+.modal.is-open .modal__panel {
+  opacity: 1;
+  transform: none;
+  animation: modal-in 280ms var(--motion-ease);
+}
+.modal.is-closing .modal__panel {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: none; }
 }
 .modal__close {
   position: absolute; top: 10px; right: 10px; z-index: 2;
@@ -610,4 +633,7 @@
 .reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .modal.is-open { animation: none; }
+  .modal__panel { transition: none; }
+  .modal.is-open .modal__panel { animation: none; }
 }
