@@ -131,12 +131,18 @@ export default function GitHubHeatmap({ username, className = "" }) {
     };
   }, [username]);
 
-  const { cells, months, total } = useMemo(() => {
+  const { cells, months, total, numCols, year } = useMemo(() => {
     const today = new Date();
-    const sunday = new Date(today);
-    sunday.setDate(today.getDate() - today.getDay()); // weeks start on Sunday
-    const firstSunday = new Date(sunday);
-    firstSunday.setDate(sunday.getDate() - 52 * 7); // 53 columns
+    const year = today.getFullYear();
+    const jan1key = `${year}-01-01`;
+    // Year-to-date view (like GitHub's yearly tab): weeks start on the Sunday
+    // on/before Jan 1, columns run from there through the current week.
+    const jan1 = new Date(year, 0, 1);
+    const start = new Date(jan1);
+    start.setDate(jan1.getDate() - jan1.getDay());
+    const thisSunday = new Date(today);
+    thisSunday.setDate(today.getDate() - today.getDay()); // weeks start on Sunday
+    const numCols = Math.round((thisSunday - start) / (7 * 24 * 3600 * 1000)) + 1;
 
     const map = new Map();
     if (api && Array.isArray(api.contributions)) {
@@ -147,9 +153,9 @@ export default function GitHubHeatmap({ username, className = "" }) {
 
     const months = [];
     let prevMonth = -1;
-    for (let c = 0; c < 53; c++) {
-      const ws = new Date(firstSunday);
-      ws.setDate(firstSunday.getDate() + c * 7);
+    for (let c = 0; c < numCols; c++) {
+      const ws = new Date(start);
+      ws.setDate(start.getDate() + c * 7);
       const m = ws.getMonth();
       if (m !== prevMonth) {
         months.push({ label: MONTHS[m], col: c });
@@ -157,23 +163,23 @@ export default function GitHubHeatmap({ username, className = "" }) {
       }
     }
 
-    // Row-major (7 rows outer, 53 columns inner) so cells line up with CSS
+    // Row-major (7 rows outer, N columns inner) so cells line up with CSS
     // grid's row-by-row auto-placement: each column = one week, left→right =
-    // oldest → newest. column 0 = first Sunday, row 0 = Sunday.
+    // oldest → newest. column 0 = start Sunday, row 0 = Sunday.
     const cells = [];
     let sum = 0;
     for (let r = 0; r < 7; r++) {
-      for (let c = 0; c < 53; c++) {
-        const d = new Date(firstSunday);
-        d.setDate(firstSunday.getDate() + c * 7 + r);
+      for (let c = 0; c < numCols; c++) {
+        const d = new Date(start);
+        d.setDate(start.getDate() + c * 7 + r);
         const key = iso(d);
-        const count = map.get(key) || 0;
+        // days before Jan 1 (leading partial week) stay empty
+        const count = key < jan1key ? 0 : map.get(key) || 0;
         sum += count;
         cells.push({ count, level: levelOf(count), iso: key });
       }
     }
-    const apiTotal = api && api.total ? api.total.lastYear : null;
-    return { cells, months, total: apiTotal != null ? apiTotal : sum };
+    return { cells, months, total: sum, numCols, year };
   }, [api, username]);
 
   // Custom swipe scrollbar: the native ("classic") scrollbar is hidden and
@@ -312,11 +318,11 @@ export default function GitHubHeatmap({ username, className = "" }) {
   }, [tip]);
 
   return (
-    <div className={`gh-heatmap ${className}`}>
+    <div className={`gh-heatmap ${className}`} style={{ "--gh-cols": numCols }}>
       <div className="gh-heatmap__head">
         <span className="gh-heatmap__label">GitHub contributions</span>
         <span className="gh-heatmap__total">
-          {total.toLocaleString("id-ID")} in the last year
+          {total.toLocaleString("id-ID")} in {year}
         </span>
       </div>
 
@@ -337,8 +343,8 @@ export default function GitHubHeatmap({ username, className = "" }) {
               would run past the right edge. */}
           <div className="gh-heatmap__months" aria-hidden="true">
             {months.map((m, i) => {
-              const nextCol = i + 1 < months.length ? months[i + 1].col : 53;
-              const span = Math.min(4, nextCol - m.col, 53 - m.col);
+              const nextCol = i + 1 < months.length ? months[i + 1].col : numCols;
+              const span = Math.min(4, nextCol - m.col, numCols - m.col);
               // drop a label with <2 columns of room — it would be clipped
               // (GitHub does the same for cramped edge labels)
               if (span < 2) return null;
@@ -357,7 +363,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
           <div
             className="gh-heatmap__grid"
             role="img"
-            aria-label={`GitHub contribution heatmap, ${total} contributions in the last year`}
+            aria-label={`GitHub contribution heatmap, ${total} contributions in ${year}`}
           >
             {cells.map((cell) => (
               <span
