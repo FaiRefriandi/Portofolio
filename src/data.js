@@ -10,22 +10,6 @@ export const profile = {
 export const aboutText =
   "Hello, I'm Fai Refriandi. A developer focused on building interactive mobile apps and modern websites. I keep learning and sharpening my skills to grow into a professional developer.";
 
-export const techStack = [
-  { label: "JavaScript", src: "assets/svgl/javascript.svg", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-  { label: "TypeScript", src: "assets/svgl/typescript.svg", href: "https://www.typescriptlang.org/" },
-  { label: "Kotlin", src: "assets/svgl/kotlin.svg", href: "https://kotlinlang.org/" },
-  { label: "Node.js", src: "assets/svgl/nodejs.svg", href: "https://nodejs.org/" },
-  { label: "React", src: "assets/svgl/react.svg", href: "https://react.dev/" },
-  { label: "Next.js", src: "assets/svgl/nextjs.svg", href: "https://nextjs.org/" },
-  { label: "GitHub", src: "assets/svgl/github.svg", href: "https://github.com/" },
-  { label: "MySQL", src: "assets/svgl/mysql.svg", href: "https://www.mysql.com/" },
-  { label: "Supabase", src: "assets/svgl/supabase.svg", href: "https://supabase.com/" },
-  { label: "Firebase", src: "assets/svgl/firebase.svg", href: "https://firebase.google.com/" },
-  { label: "Vercel", src: "assets/svgl/vercel.svg", href: "https://vercel.com/" },
-  { label: "Netlify", src: "assets/svgl/netlify.svg", href: "https://www.netlify.com/" },
-  { label: "Python", src: "assets/svgl/python.svg", href: "https://www.python.org/" },
-];
-
 export const projects = [
   {
     title: "Flowzup Social App",
