@@ -182,11 +182,19 @@ export default function GitHubHeatmap({ username, className = "" }) {
   // hidden on desktop where the full grid fits.
   const scrollRef = useRef(null);
   const trackRef = useRef(null);
+  const pinnedEnd = useRef(false);
   const [bar, setBar] = useState(null);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    // Start pinned to the newest weeks when the grid overflows (mobile).
+    // Otherwise users land on year-old data with only "Sep" in view and
+    // have to discover the swipe to reach the current months.
+    if (!pinnedEnd.current && el.scrollWidth > el.clientWidth + 1) {
+      el.scrollLeft = el.scrollWidth;
+      pinnedEnd.current = true;
+    }
     const update = () => {
       const { scrollWidth, clientWidth, scrollLeft } = el;
       if (scrollWidth <= clientWidth + 1) {
@@ -322,12 +330,17 @@ export default function GitHubHeatmap({ username, className = "" }) {
         <div className="gh-heatmap__scroll-inner">
           {/* Labels use the exact same 53-column grid as the cells, so each label
               starts precisely at its week's column and can never drift out of sync.
-              The row clips any label that would run past the right edge. */}
+              Each label owns exactly its own weeks (up to the next label, max 4
+              columns) so labels never overlap — an overlap makes grid
+              auto-placement push labels onto a second row that this fixed-height
+              row clips away (only "Sep" survived). The row clips any label that
+              would run past the right edge. */}
           <div className="gh-heatmap__months" aria-hidden="true">
-            {months.map((m) => {
-              const span = Math.min(4, 53 - m.col);
-              // drop a label that only has ~1 column of room — it would be
-              // clipped at the row's right edge (GitHub does the same)
+            {months.map((m, i) => {
+              const nextCol = i + 1 < months.length ? months[i + 1].col : 53;
+              const span = Math.min(4, nextCol - m.col, 53 - m.col);
+              // drop a label with <2 columns of room — it would be clipped
+              // (GitHub does the same for cramped edge labels)
               if (span < 2) return null;
               return (
                 <span
