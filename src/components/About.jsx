@@ -1,0 +1,66 @@
+import { useEffect, useRef, useState } from "react";
+import { aboutText } from "../data.js";
+import WindowDots from "./WindowDots.jsx";
+
+export default function About() {
+  const [typed, setTyped] = useState("");
+  const doneRef = useRef(false);
+
+  useEffect(() => {
+    if (doneRef.current) return;
+    const m = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (m.matches) {
+      setTyped(aboutText);
+      doneRef.current = true;
+      return;
+    }
+
+    let i = 0;
+    const min = 28;
+    const max = 90;
+    const PUNCT = new Set([".", ",", "!", "?", ";", ":"]);
+
+    function nextDelay(ch) {
+      // natural typing: random per-char, longer pause after punctuation & spaces
+      let d = min + Math.random() * (max - min);
+      if (PUNCT.has(ch)) d += 280;
+      else if (ch === " ") d += 60;
+      return d;
+    }
+
+    let timer = null;
+    function tick() {
+      if (i >= aboutText.length) {
+        doneRef.current = true;
+        return;
+      }
+      i += 1;
+      setTyped(aboutText.slice(0, i));
+      timer = setTimeout(tick, nextDelay(aboutText[i - 1]));
+    }
+    timer = setTimeout(tick, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <section id="about" className="section reveal">
+      <div className="section-head">
+        <div className="section-head__left">
+          <WindowDots />
+          <h2>About</h2>
+        </div>
+        <span className="count">01 — Intro</span>
+      </div>
+      <div className="about about--cmd">
+        <div className="about__cmd-header">
+          <span className="about__cmd-prompt">fai@portfolio:~$</span>
+          <span className="about__cmd-cmd">cat about.txt</span>
+        </div>
+        <p className="about__cmd-body">
+          {typed}
+          <span className="about__cmd-cursor" aria-hidden="true" />
+        </p>
+      </div>
+    </section>
+  );
+}

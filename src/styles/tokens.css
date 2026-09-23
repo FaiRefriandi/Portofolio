@@ -1,0 +1,81 @@
+:root {
+  --font-family-primary: "Space Grotesk", sans-serif;
+  --font-family-stack: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 13px;
+  --font-size-sm: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 15px;
+  --font-size-xl: 15px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 27px;
+  --font-size-4xl: 28px;
+  --font-weight-base: 400;
+  --font-line-height-base: 21px;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b8b8c0;
+  --color-text-tertiary: #8a8a92;
+  --color-text-inverse: #161616;
+  --color-surface-base: #000000;
+  --color-surface-muted: #1c1c1e;
+  --color-surface-strong: #101012;
+  --color-border-default: #333336;
+  --color-border-muted: #55555a;
+  --color-border-strong: #46464a;
+
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 11.53px;
+  --space-6: 12px;
+  --space-7: 16px;
+  --space-8: 20px;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  --shadow-1: none;
+  --shadow-2: none;
+
+  --motion-duration-instant: 150ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --semantic-bg: #101012;
+  --semantic-bg-subtle: #161618;
+  --semantic-bg-muted: #1e1e21;
+  --semantic-bg-elevated: #26262a;
+  --semantic-text: #ffffff;
+  --semantic-text-secondary: #b8b8c0;
+  --semantic-text-tertiary: #8a8a92;
+  --semantic-text-inverse: #101012;
+  --semantic-stroke: #333336;
+  --semantic-stroke-strong: #4a4a4f;
+  --semantic-stroke-muted: #26262a;
+  --semantic-accent: #ffffff;
+
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-md);
+  --text-md: var(--font-size-md);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  --content-max: 980px;
+  --header-h: 56px;
+
+  --band-bg: var(--semantic-bg-subtle);
+  --band-border: var(--semantic-stroke);
+
+  --traffic-red: #3a3a3d;
+  --traffic-yellow: #48484c;
+  --traffic-green: #2e2e31;
+}
