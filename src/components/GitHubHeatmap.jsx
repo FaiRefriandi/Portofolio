@@ -72,6 +72,17 @@ function levelOf(count) {
   return 4;
 }
 
+function prettyDate(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+
+function countText(count) {
+  if (count <= 0) return "No contributions";
+  if (count === 1) return "1 contribution";
+  return `${count} contributions`;
+}
+
 export default function GitHubHeatmap({ username, className = "" }) {
   // Start from the bundled snapshot (real data, zero flash), then keep it fresh
   // by polling the live API. The generated pattern is only a last resort.
@@ -248,6 +259,50 @@ export default function GitHubHeatmap({ username, className = "" }) {
     el.scrollTo({ left: ratio * (el.scrollWidth - el.clientWidth), behavior: "smooth" });
   };
 
+  // Click / tap a day cell → floating bubble with that day's info.
+  // Tapping the same cell again toggles it closed.
+  const [tip, setTip] = useState(null);
+  const onCellClick = (cell, e) => {
+    if (tip && tip.iso === cell.iso) {
+      setTip(null);
+      return;
+    }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const below = rect.top < 96; // not enough room above → show under the cell
+    const x = Math.min(Math.max(rect.left + rect.width / 2, 112), window.innerWidth - 112);
+    setTip({
+      iso: cell.iso,
+      count: cell.count,
+      x,
+      y: below ? rect.bottom + 10 : rect.top - 10,
+      below,
+    });
+  };
+
+  // Dismiss the bubble on Escape, scroll, resize, or a tap outside
+  // the cells and the bubble itself.
+  useEffect(() => {
+    if (!tip) return;
+    const close = () => setTip(null);
+    const onKey = (e) => {
+      if (e.key === "Escape") close();
+    };
+    const onDown = (e) => {
+      if (e.target && e.target.closest && e.target.closest(".gh-heatmap__cell, .gh-heatmap__tip")) return;
+      close();
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
+    window.addEventListener("scroll", close, { capture: true, passive: true });
+    window.addEventListener("resize", close);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("scroll", close, { capture: true });
+      window.removeEventListener("resize", close);
+    };
+  }, [tip]);
+
   return (
     <div className={`gh-heatmap ${className}`}>
       <div className="gh-heatmap__head">
@@ -297,6 +352,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
                 className="gh-heatmap__cell"
                 title={`${cell.count} contribution${cell.count === 1 ? "" : "s"} on ${cell.iso}`}
                 style={{ background: `rgba(232, 232, 232, ${LEVEL_OPACITY[cell.level]})` }}
+                onClick={(e) => onCellClick(cell, e)}
               />
             ))}
           </div>
@@ -315,6 +371,17 @@ export default function GitHubHeatmap({ username, className = "" }) {
             style={{ left: `${bar.left}%`, width: `${bar.width}%` }}
             onPointerDown={onThumbPointerDown}
           />
+        </div>
+      )}
+
+      {tip && (
+        <div
+          className={`gh-heatmap__tip${tip.below ? " gh-heatmap__tip--below" : ""}`}
+          style={{ left: tip.x, top: tip.y }}
+          role="status"
+        >
+          <strong>{countText(tip.count)}</strong>
+          <span>{prettyDate(tip.iso)}</span>
         </div>
       )}
 
