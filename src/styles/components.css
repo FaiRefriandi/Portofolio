@@ -197,6 +197,31 @@
 .gh-heatmap__total { color: var(--semantic-text-secondary); }
 /* Desktop: full 53-week grid, cells stretch evenly to fill the card. */
 .gh-heatmap__scroll { overflow-x: visible; min-width: 0; }
+/* Native ("classic") scrollbar is always hidden here — swipe position is
+   shown through the custom .gh-heatmap__scrollbar thumb instead. */
+.gh-heatmap__scroll { scrollbar-width: none; -ms-overflow-style: none; }
+.gh-heatmap__scroll::-webkit-scrollbar { display: none; }
+.gh-heatmap__scrollbar {
+  position: relative;
+  height: 4px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: var(--semantic-stroke);
+  cursor: pointer;
+  touch-action: none;
+}
+.gh-heatmap__scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 36px;
+  border-radius: 999px;
+  background: var(--semantic-text-tertiary);
+  cursor: grab;
+  transition: background 160ms ease;
+}
+.gh-heatmap__scrollbar-thumb:hover { background: var(--semantic-text-secondary); }
+.gh-heatmap__scrollbar-thumb:active { cursor: grabbing; background: var(--semantic-text); }
 .gh-heatmap__scroll-inner { width: 100%; min-width: 0; display: flex; flex-direction: column; gap: 0; }
 .gh-heatmap__months {
   display: grid;
@@ -236,12 +261,26 @@
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x pan-y;
-    scrollbar-width: thin;
     margin: 0 calc(var(--space-7) * -1);
     padding: 2px var(--space-7) 8px;
     cursor: grab;
   }
   .gh-heatmap__scroll:active { cursor: grabbing; }
+  /* Edge fades hint that there is more grid to swipe toward. The mask stays
+     fixed while content scrolls underneath; each side only fades while there
+     is actually more content in that direction. */
+  .gh-heatmap__scroll--more-right {
+    mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+  }
+  .gh-heatmap__scroll--more-left {
+    mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent);
+  }
+  .gh-heatmap__scroll--more-left.gh-heatmap__scroll--more-right {
+    mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+  }
   .gh-heatmap__scroll-inner { width: max-content; min-width: 100%; }
   .gh-heatmap__months,
   .gh-heatmap__grid {
