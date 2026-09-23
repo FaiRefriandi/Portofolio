@@ -230,12 +230,17 @@
   height: 13px;
   margin-bottom: 4px;
   font-size: 9px; letter-spacing: 0.04em;
+  /* line-height must equal the row height: it inherits a fixed 21px from
+     body, which pushes the 9px glyphs outside the 13px clipped row and
+     makes every month label invisible. */
+  line-height: 13px;
   color: var(--semantic-text-tertiary);
   overflow: hidden;
 }
 .gh-heatmap__month {
   /* same grid as the cells below → labels stay perfectly aligned with weeks */
   grid-column: auto / span 4;
+  align-self: center;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
