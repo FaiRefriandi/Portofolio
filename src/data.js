@@ -1,14 +1,14 @@
 export const profile = {
   name: "Fai Refriandi",
   subtitle: "Product-focused Developer",
-  avatar: "assets/profile.png",
+  avatar: "assets/profile.webp",
   github: "fairefriandi",
   availability: "Available for opportunities",
   location: "Bandung, Indonesia",
 };
 
 export const aboutText =
-  "Hello, I'm Fai Refriandi. A developer focused on building interactive mobile apps and modern websites. I keep learning and sharpening my skills to grow into a professional developer.";
+  "Hello, I'm Fai Refriandi, a Computer Science graduate from UNIKOM. I build websites, Android apps, and integrated software systems, with a growing focus on Agentic AI — autonomous systems that reason, use tools, and execute complex workflows. I'm open to opportunities to contribute to meaningful projects and collaborate with development teams.";
 
 export const projects = [
   {
