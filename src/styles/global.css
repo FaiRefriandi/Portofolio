@@ -44,6 +44,10 @@ img { display: block; max-width: 100%; }
   max-width: var(--content-max);
   margin: 0 auto;
   padding: calc(var(--space-8) * 2 + var(--header-h)) var(--space-8) 80px;
+  /* blueprint rails: vertical dashed lines framing the content column,
+     full height, continuous with the header rails */
+  border-left: 1px dashed var(--semantic-stroke);
+  border-right: 1px dashed var(--semantic-stroke);
 }
 @media (max-width: 768px) { .wrap { padding: calc(var(--space-7) * 2 + var(--header-h)) var(--space-7) 64px; } }
 
@@ -65,11 +69,23 @@ img { display: block; max-width: 100%; }
 }
 .mono { font-family: var(--font-family-stack); font-size: var(--font-size-md); line-height: var(--font-line-height-base); }
 
-.section { margin-top: 36px; scroll-margin-top: 84px; }
+.section { position: relative; margin-top: var(--section-gap); scroll-margin-top: 84px; }
+/* full-bleed dashed rule centered in the gap above each section, so every
+   block is visually connected rail-to-rail like a schematic */
+.section::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--section-gap) / -2);
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  border-top: 1px dashed var(--semantic-stroke);
+  pointer-events: none;
+}
 .section-head {
   display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
   padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--semantic-stroke);
+  border-bottom: 1px dashed var(--semantic-stroke);
   margin: 0 0 var(--space-7);
 }
 .section-head__left {

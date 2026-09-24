@@ -42,17 +42,17 @@
   --motion-duration-instant: 150ms;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --semantic-bg: #101012;
-  --semantic-bg-subtle: #161618;
-  --semantic-bg-muted: #1e1e21;
-  --semantic-bg-elevated: #26262a;
+  --semantic-bg: #0F0E0E;
+  --semantic-bg-subtle: #141414;
+  --semantic-bg-muted: #1B1B1B;
+  --semantic-bg-elevated: #232323;
   --semantic-text: #ffffff;
-  --semantic-text-secondary: #b8b8c0;
-  --semantic-text-tertiary: #8a8a92;
-  --semantic-text-inverse: #101012;
-  --semantic-stroke: #333336;
-  --semantic-stroke-strong: #4a4a4f;
-  --semantic-stroke-muted: #26262a;
+  --semantic-text-secondary: #a3a3a3;
+  --semantic-text-tertiary: #737373;
+  --semantic-text-inverse: #0F0E0E;
+  --semantic-stroke: #272727;
+  --semantic-stroke-strong: #404040;
+  --semantic-stroke-muted: #1F1F1F;
   --semantic-accent: #ffffff;
 
   --text-xs: var(--font-size-xs);
@@ -71,6 +71,7 @@
 
   --content-max: 980px;
   --header-h: 56px;
+  --section-gap: 36px;
 
   --band-bg: var(--semantic-bg-subtle);
   --band-border: var(--semantic-stroke);
