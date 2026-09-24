@@ -54,7 +54,7 @@
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -62,8 +62,13 @@
 .hero__cover {
   position: relative;
   height: 200px; /* compact banner — the map is drawn wider and cropped by overflow:hidden */
+  /* full-bleed: break out of the content column rail-to-rail past the rails,
+     edge to edge of the viewport */
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
   border-bottom: 1px dashed var(--semantic-stroke);
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   background: var(--semantic-bg-muted);
   overflow: hidden;
 }
@@ -449,27 +454,6 @@
   display: flex; flex-wrap: wrap; gap: var(--space-3);
 }
 .about__rule { margin-top: var(--space-7); }
-
-.projects-wrap { display: grid; gap: var(--space-7); }
-.featured {
-  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-7);
-  padding: var(--space-7);
-  border: 0;
-  border-radius: var(--radius-md);
-  background: transparent;
-  cursor: pointer;
-}
-.featured:hover { background: var(--semantic-bg-subtle); }
-.featured:active { opacity: 0.96; }
-.featured__media { border-radius: var(--radius-sm); overflow: hidden; background: var(--semantic-bg); }
-.featured__media .imgbox { aspect-ratio: 16/9; overflow: hidden; background: var(--semantic-bg-muted); }
-.featured__media img { width: 100%; height: 100%; object-fit: cover; }
-.featured__caption { padding: 8px 10px; font-family: var(--font-family-stack); font-size: var(--font-size-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--semantic-text-secondary); border-top: 1px dashed var(--semantic-stroke); }
-.featured__meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.featured__kicker { font-family: var(--font-family-stack); font-size: var(--font-size-sm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--semantic-text-secondary); }
-.featured__title { margin: 8px 0 0; font-family: var(--font-family-stack); font-size: var(--text-xl); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; color: var(--semantic-text); }
-.featured__desc { margin: 8px 0 0; color: var(--semantic-text-secondary); font-family: var(--font-family-stack); font-size: var(--font-size-md); line-height: 1.7; }
-@media (max-width: 900px) { .featured { grid-template-columns: 1fr; } }
 
 .cards {
   display: grid;
