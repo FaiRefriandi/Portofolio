@@ -51,15 +51,23 @@ export default function About() {
         </div>
         <span className="count">01 — Intro</span>
       </div>
-      <div className="about about--cmd">
-        <div className="about__cmd-header">
-          <span className="about__cmd-prompt">fai@portfolio:~$</span>
-          <span className="about__cmd-cmd">cat about.txt</span>
+      <div className="about about--term" role="region" aria-label="About terminal">
+        <div className="about__term-bar">
+          <WindowDots />
+          <span className="about__term-title">fai@portfolio: ~ — zsh</span>
+          <span aria-hidden="true" />
         </div>
-        <p className="about__cmd-body">
-          {typed}
-          <span className="about__cmd-cursor" aria-hidden="true" />
-        </p>
+        <div className="about__term-body">
+          <div className="about__term-line" aria-hidden="true">
+            <span className="about__term-prompt">➜</span>
+            <span className="about__term-dir">~</span>
+            <span className="about__term-cmd">cat about.txt</span>
+          </div>
+          <p className="about__term-out">
+            {typed}
+            <span className="about__term-cursor" aria-hidden="true" />
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -393,51 +393,68 @@
   border-radius: 0;
   background: transparent;
 }
-.about--cmd {
+.about--term {
   padding: 0;
   overflow: hidden;
+  border: 1px solid var(--semantic-stroke);
+  border-radius: var(--radius-md);
+  background: #0A0A0A;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
   font-family: var(--font-family-stack);
 }
-.about__cmd-header {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 0;
-  border-bottom: 1px dashed var(--semantic-stroke);
-  background: transparent;
-  font-size: var(--font-size-sm);
-  color: var(--semantic-text-secondary);
+.about__term-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--semantic-bg-muted);
+  border-bottom: 1px solid var(--semantic-stroke);
 }
-.about__cmd-prompt { color: var(--semantic-text); font-weight: 600; }
-.about__cmd-cmd { color: var(--semantic-text-secondary); }
-.about__cmd-body {
-  padding: var(--space-8) 0;
+.about__term-bar .window-dots { justify-self: start; }
+/* authentic macOS traffic lights (scoped to the terminal only) */
+.about__term-bar .window-dots__dot--red { background: #FF5F57; }
+.about__term-bar .window-dots__dot--yellow { background: #FEBC2E; }
+.about__term-bar .window-dots__dot--green { background: #28C840; }
+.about__term-title {
+  justify-self: center;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--semantic-text-secondary);
+  white-space: nowrap;
+}
+.about__term-body {
+  padding: var(--space-7) var(--space-8);
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+}
+.about__term-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: var(--font-size-md);
+}
+.about__term-prompt { color: var(--semantic-text); font-weight: 700; }
+.about__term-dir { color: var(--semantic-text-secondary); }
+.about__term-cmd { color: var(--semantic-text-secondary); }
+.about__term-out {
   margin: 0;
   color: var(--semantic-text-secondary);
-  font-family: var(--font-family-stack);
-  font-size: var(--font-size-md); line-height: 1.8; text-wrap: pretty;
+  text-wrap: pretty;
   overflow-wrap: break-word;
 }
-.about__cmd-cursor {
+.about__term-cursor {
   display: inline-block;
   width: 8px;
   height: 1.1em;
   margin-left: 3px;
   vertical-align: text-bottom;
   background: var(--semantic-text);
-  animation: cmd-blink 1s steps(1) infinite;
+  animation: term-blink 1s steps(1) infinite;
 }
-@keyframes cmd-blink {
+@keyframes term-blink {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
-}
-.about__cmd-footer {
-  padding: 10px var(--space-8);
-  border-top: 1px solid var(--semantic-stroke);
-  background: var(--semantic-bg-muted);
-  font-family: var(--font-family-stack);
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--semantic-text-tertiary);
 }
 .about p {
   margin: 0;
@@ -456,8 +473,22 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-7);
+  row-gap: var(--space-8);
 }
 @media (max-width: 800px) { .cards { grid-template-columns: 1fr; } }
+/* dashed divider above every card row except the first — the grid gap
+   breaks the line between columns, blueprint-style */
+.card:nth-child(n+3) {
+  border-top: 1px dashed var(--semantic-stroke);
+  padding-top: var(--space-7);
+}
+@media (max-width: 800px) {
+  .card:nth-child(n+3) { border-top: 0; }
+  .card:nth-child(n+2) {
+    border-top: 1px dashed var(--semantic-stroke);
+    padding-top: var(--space-7);
+  }
+}
 
 .card {
   display: grid; gap: var(--space-7);
