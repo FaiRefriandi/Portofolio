@@ -61,7 +61,7 @@
 }
 .hero__cover {
   position: relative;
-  height: 200px; /* compact banner — the map is drawn wider and cropped by overflow:hidden */
+  height: 360px; /* tall enough to show most of the archipelago top-to-bottom */
   /* full-bleed: break out of the content column rail-to-rail past the rails,
      edge to edge of the viewport */
   width: 100vw;
@@ -73,7 +73,7 @@
   overflow: hidden;
 }
 @media (max-width: 700px) {
-  .hero__cover { height: 140px; }
+  .hero__cover { height: 200px; }
 }
 .hero__map {
   position: absolute; inset: 0;

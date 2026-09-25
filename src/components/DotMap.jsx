@@ -81,10 +81,11 @@ export default function DotMap({ className = "" }) {
         return { x0: (w - mapW) / 2, y0: 0, mapW, mapH };
       }
 
-      // Wide container: bias the crop window toward the main island band
-      // (≈ -3.8° lat) so Java / Sulawesi / most of Papua stay centered; the far
-      // southern islands (Timor) and northern tips can be cropped on desktop.
-      const targetLat = -3.8;
+      // Wide container: bias the crop window slightly south of the island band
+      // (≈ -3° lat) so Aceh's tip cost is traded for Bali, Nusa Tenggara and
+      // most of Timor while Java / Sulawesi / Papua stay centered; the far
+      // northern micro-islands and Rote can be cropped on desktop.
+      const targetLat = -3.0;
       const centerFrac = Math.min(1, Math.max(0, (geoBounds.north - targetLat) / span));
       return { x0: PAD, y0: h / 2 - centerFrac * mapH, mapW, mapH };
     }
