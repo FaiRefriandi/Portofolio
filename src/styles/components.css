@@ -54,7 +54,7 @@
 
 .hero {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -62,13 +62,10 @@
 .hero__cover {
   position: relative;
   height: 360px; /* tall enough to show most of the archipelago top-to-bottom */
-  /* full-bleed: break out of the content column rail-to-rail past the rails,
-     edge to edge of the viewport */
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
+  /* content-column width (rail to rail): the map fills the banner height so
+     nothing is cut top/bottom, sides crop a sliver instead */
   border-bottom: 1px dashed var(--semantic-stroke);
-  border-radius: 0;
+  border-radius: var(--radius-sm);
   background: var(--semantic-bg-muted);
   overflow: hidden;
 }

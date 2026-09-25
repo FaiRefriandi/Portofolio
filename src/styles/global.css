@@ -43,13 +43,15 @@ img { display: block; max-width: 100%; }
   z-index: 1;
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: calc(var(--space-8) * 2 + var(--header-h)) var(--space-8) 80px;
+  /* top padding is exactly the fixed header height: the hero cover touches
+     the header with zero gap */
+  padding: var(--header-h) var(--space-8) 80px;
   /* blueprint rails: vertical dashed lines framing the content column,
      full height, continuous with the header rails */
   border-left: 1px dashed var(--semantic-stroke);
   border-right: 1px dashed var(--semantic-stroke);
 }
-@media (max-width: 768px) { .wrap { padding: calc(var(--space-7) * 2 + var(--header-h)) var(--space-7) 64px; } }
+@media (max-width: 768px) { .wrap { padding: var(--header-h) var(--space-7) 64px; } }
 
 .eyebrow {
   font-family: var(--font-family-stack);

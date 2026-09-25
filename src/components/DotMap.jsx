@@ -133,11 +133,13 @@ export default function DotMap({ className = "" }) {
 
       points = [];
       let idx = 0;
-      // only rasterize cells that fall inside the visible cover
-      const yStart = Math.max(0, proj.y0);
-      const yEnd = Math.min(h, proj.y0 + proj.mapH);
-      const xStart = Math.max(0, proj.x0);
-      const xEnd = Math.min(w, proj.x0 + proj.mapW);
+      // only rasterize cells that fall inside the visible cover, keeping a
+      // small margin from the canvas edges so edge dots are never sliced half
+      const EDGE = 2;
+      const yStart = Math.max(EDGE, proj.y0);
+      const yEnd = Math.min(h - EDGE, proj.y0 + proj.mapH);
+      const xStart = Math.max(EDGE, proj.x0);
+      const xEnd = Math.min(w - EDGE, proj.x0 + proj.mapW);
       for (let y = yStart; y < yEnd; y += STEP) {
         for (let x = xStart; x < xEnd; x += STEP) {
           for (const poly of polys) {
