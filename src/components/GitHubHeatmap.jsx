@@ -8,7 +8,7 @@ const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
-const LEVEL_OPACITY = [0.06, 0.2, 0.42, 0.66, 0.95];
+const LEVEL_OPACITY = [0.14, 0.3, 0.52, 0.74, 1.0];
 
 // The public community API mirrors a user's contribution graph as JSON.
 // If it fails (offline / API down) we fall back to a deterministic pattern

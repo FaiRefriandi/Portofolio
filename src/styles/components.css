@@ -520,13 +520,13 @@
 .card:hover { background: var(--semantic-bg-subtle); }
 .card:active { opacity: 0.96; }
 .card:focus-visible { outline-offset: 2px; }
-.card__media { border-radius: var(--radius-sm); overflow: hidden; background: var(--semantic-bg); }
+.card__media { border-radius: 12px; overflow: hidden; background: var(--semantic-bg); border: 1px solid var(--semantic-stroke-strong); }
 /* Safari-style browser chrome on top of each preview */
 .browser-bar {
   display: flex; align-items: center; gap: 10px;
   padding: 8px 12px;
   background: var(--semantic-bg-muted);
-  border-bottom: 1px solid var(--semantic-stroke);
+  border-bottom: 1px solid var(--semantic-stroke-strong);
 }
 .browser-url {
   flex: 1; min-width: 0;
@@ -534,7 +534,7 @@
   font-size: 11px; letter-spacing: 0.02em;
   color: var(--semantic-text-tertiary);
   background: var(--semantic-bg);
-  border: 1px solid var(--semantic-stroke);
+  border: 1px solid var(--semantic-stroke-strong);
   border-radius: 999px;
   padding: 3px 12px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -612,7 +612,7 @@
 .contact__label { font-family: var(--font-family-stack); font-size: var(--font-size-sm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--semantic-text-secondary); min-width: 96px; }
 .contact__value a { font-family: var(--font-family-stack); font-weight: 700; font-size: var(--font-size-md); color: var(--semantic-text); }
 .contact__value a:hover { text-decoration: underline; }
-@media (max-width: 700px) { .contact__row { flex-direction: column; align-items: flex-start; gap: 6px; } }
+@media (max-width: 700px) { .contact__row { flex-direction: column; align-items: flex-start; gap: 6px; border-top: 0; } }
 
 .modal {
   position: fixed; inset: 0; z-index: 60;
@@ -672,7 +672,7 @@
 .modal__body { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); padding: var(--space-8); max-height: min(86vh, 820px); overflow: auto; overscroll-behavior: contain; scrollbar-width: none; -ms-overflow-style: none; }
 .modal__body::-webkit-scrollbar { display: none; }
 @media (max-width: 900px) { .modal__body { grid-template-columns: 1fr; } }
-.modal__media { position: relative; top: auto; height: fit-content; border-radius: var(--radius-sm); overflow: hidden; background: var(--semantic-bg); }
+.modal__media { position: relative; top: auto; height: fit-content; border-radius: 12px; overflow: hidden; background: var(--semantic-bg); border: 1px solid var(--semantic-stroke-strong); }
 .modal__media img { width: 100%; height: auto; object-fit: cover; }
 .modal__period { font-family: var(--font-family-stack); font-size: var(--font-size-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--semantic-text-secondary); }
 .modal__title { margin: 6px 0 0; font-family: var(--font-family-stack); font-size: 18px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; color: var(--semantic-text); }
