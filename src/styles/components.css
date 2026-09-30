@@ -397,7 +397,7 @@
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--semantic-stroke);
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   background: #0A0A0A;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
   font-family: var(--font-family-stack);
@@ -406,15 +406,17 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 10px 14px;
+  padding: 12px 16px;
   background: var(--semantic-bg-muted);
   border-bottom: 1px solid var(--semantic-stroke);
 }
 .about__term-bar .window-dots { justify-self: start; }
-/* authentic macOS traffic lights (scoped to the terminal only) */
-.about__term-bar .window-dots__dot--red { background: #FF5F57; }
-.about__term-bar .window-dots__dot--yellow { background: #FEBC2E; }
-.about__term-bar .window-dots__dot--green { background: #28C840; }
+/* monochrome whites: bright white → gray → dim gray (scoped to terminal;
+   card Safari bars stay macOS colors) */
+.about__term-bar .window-dots__dot { width: 12px; height: 12px; }
+.about__term-bar .window-dots__dot--red { background: #FFFFFF; }
+.about__term-bar .window-dots__dot--yellow { background: #A3A3A3; }
+.about__term-bar .window-dots__dot--green { background: #525252; }
 .about__term-title {
   justify-self: center;
   font-size: 12px;
@@ -424,6 +426,7 @@
 }
 .about__term-body {
   padding: var(--space-7) var(--space-8);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: var(--font-size-md);
   line-height: 1.8;
 }
@@ -432,6 +435,7 @@
   align-items: baseline;
   gap: 8px;
   margin-bottom: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: var(--font-size-md);
 }
 .about__term-prompt { color: var(--semantic-text); font-weight: 700; }
