@@ -526,7 +526,7 @@
 .browser-bar {
   display: flex; align-items: center; gap: 10px;
   padding: 8px 12px;
-  background: var(--semantic-bg-elevated);
+  background: #232323;
 }
 .browser-url {
   flex: 1; min-width: 0;
