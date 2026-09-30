@@ -1,7 +1,7 @@
 export const profile = {
   name: "Fai Refriandi",
   subtitle: "Product-focused Developer",
-  avatar: "assets/profile.webp",
+  avatar: "assets/profile.gif",
   github: "fairefriandi",
   availability: "Available for opportunities",
   location: "Bandung, Indonesia",
