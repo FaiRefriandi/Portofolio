@@ -1,16 +1,13 @@
 .site-header {
   position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 40;
   background: var(--semantic-bg);
-  border-bottom: 1px dashed var(--semantic-stroke);
 }
 .site-header__inner {
   max-width: var(--content-max); margin: 0 auto; height: 100%;
   padding: 0 var(--space-8);
   display: flex; align-items: center; justify-content: flex-start; gap: var(--space-7);
-  border-left: 1px dashed var(--semantic-stroke);
-  border-right: 1px dashed var(--semantic-stroke);
 }
-@media (max-width: 768px) { .site-header__inner { padding: 0 var(--space-7); border-left: 0; border-right: 0; } }
+@media (max-width: 768px) { .site-header__inner { padding: 0 var(--space-7); } }
 
 .brand {
   font-family: "Ndot57", var(--font-family-stack);
@@ -54,29 +51,32 @@
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
 }
 .hero__cover {
   position: relative;
-  height: 360px; /* tall enough to show most of the archipelago top-to-bottom */
-  /* content-column width (rail to rail): the map fills the banner height so
-     nothing is cut top/bottom, sides crop a sliver instead */
-  border-bottom: 1px dashed var(--semantic-stroke);
+  height: 360px;
   border-radius: var(--radius-sm);
   background: var(--semantic-bg-muted);
   overflow: hidden;
 }
 @media (max-width: 700px) {
-  .hero__cover { height: 200px; }
+  /* mobile: banner bleeds edge to edge of the screen */
+  .hero__cover {
+    height: 200px;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    border-radius: 0;
+  }
 }
-.hero__map {
-  position: absolute; inset: 0;
+.hero__cover-img {
   width: 100%; height: 100%;
-  opacity: 0.9;
-  pointer-events: none;
+  object-fit: cover;
+  display: block;
 }
 .hero__body {
   position: relative; /* anchor for the absolutely-positioned avatar */

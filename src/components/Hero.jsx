@@ -1,5 +1,4 @@
 import { profile } from "../data.js";
-import DotMap from "./DotMap.jsx";
 import GitHubHeatmap from "./GitHubHeatmap.jsx";
 
 export default function Hero() {
@@ -7,7 +6,7 @@ export default function Hero() {
     <section className="hero reveal" aria-label="Profile">
       {/* Cover / banner */}
       <div className="hero__cover">
-        <DotMap className="hero__map" />
+        <img className="hero__cover-img" src="assets/cover.gif" alt="" aria-hidden="true" loading="eager" />
       </div>
 
       {/* Profile body (Twitter style) */}

@@ -87,7 +87,6 @@ img { display: block; max-width: 100%; }
 .section-head {
   display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
   padding-bottom: var(--space-3);
-  border-bottom: 1px dashed var(--semantic-stroke);
   margin: 0 0 var(--space-7);
 }
 .section-head__left {
