@@ -59,7 +59,7 @@ export default function Modal({ project, onClose }) {
 
         <div className="modal__body">
           <div className="modal__media">
-            <img src={shown.image} alt={shown.title} />
+            <img src={shown.image} alt={shown.title} draggable={false} />
           </div>
 
           <div>

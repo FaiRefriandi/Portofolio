@@ -28,6 +28,18 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
   border-radius: var(--radius-xs);
 }
 img { display: block; max-width: 100%; }
+/* Anti-download layer for images/assets: no drag, no select, no iOS
+   long-press save, clicks pass through to the parent element. Note: this
+   only stops casual saving — anything rendered is already on the client,
+   so DevTools/screenshots can always grab it. Real ownership protection
+   would need visible watermarks. */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
 @font-face {
   font-family: "Ndot57";
   src: url("/assets/font/Ndot57.otf") format("opentype");

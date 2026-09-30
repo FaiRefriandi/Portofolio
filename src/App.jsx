@@ -12,6 +12,13 @@ export default function App() {
   const [activeProject, setActiveProject] = useState(null);
 
   useEffect(() => {
+    // block right-click / long-press "save image" on images only (page text
+    // and links keep their normal context menu)
+    const noImgMenu = (e) => {
+      if (e.target && e.target.closest && e.target.closest("img")) e.preventDefault();
+    };
+    document.addEventListener("contextmenu", noImgMenu);
+
     const m = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (m.matches) {
       document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
@@ -42,6 +49,7 @@ export default function App() {
     return () => {
       cancelAnimationFrame(raf);
       io.disconnect();
+      document.removeEventListener("contextmenu", noImgMenu);
     };
   }, []);
 
