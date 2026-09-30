@@ -42,14 +42,14 @@
   --motion-duration-instant: 150ms;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --semantic-bg: #0F0E0E;
+  --semantic-bg: #000000;
   --semantic-bg-subtle: #141414;
   --semantic-bg-muted: #1B1B1B;
   --semantic-bg-elevated: #232323;
   --semantic-text: #ffffff;
   --semantic-text-secondary: #a3a3a3;
   --semantic-text-tertiary: #737373;
-  --semantic-text-inverse: #0F0E0E;
+  --semantic-text-inverse: #000000;
   --semantic-stroke: #565656;
   --semantic-stroke-strong: #737373;
   --semantic-stroke-muted: #1F1F1F;
