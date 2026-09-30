@@ -46,7 +46,6 @@ export default function About() {
     <section id="about" className="section reveal">
       <div className="section-head">
         <div className="section-head__left">
-          <WindowDots />
           <h2>About</h2>
         </div>
         <span className="count">01 — Intro</span>

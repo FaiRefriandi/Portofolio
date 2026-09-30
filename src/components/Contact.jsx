@@ -1,12 +1,10 @@
 import { contacts } from "../data.js";
-import WindowDots from "./WindowDots.jsx";
 
 export default function Contact() {
   return (
     <section id="contact" className="section reveal">
       <div className="section-head">
         <div className="section-head__left">
-          <WindowDots />
           <h2>Contact</h2>
         </div>
         <span className="count">Get in touch</span>

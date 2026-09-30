@@ -17,7 +17,6 @@ export default function Projects({ onOpen }) {
     <section id="projects" className="section reveal">
       <div className="section-head">
         <div className="section-head__left">
-          <WindowDots />
           <h2>Projects</h2>
         </div>
         <span className="count">{projects.length} selected</span>

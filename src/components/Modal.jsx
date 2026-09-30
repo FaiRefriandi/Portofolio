@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import WindowDots from "./WindowDots.jsx";
 
 // Must stay in sync with the exit transition in components.css (.modal__panel).
 const EXIT_MS = 240;
-
-function hostOf(link) {
-  try { return new URL(link).hostname.replace(/^www\./, ""); }
-  catch { return ""; }
-}
 
 export default function Modal({ project, onClose }) {
   const closeRef = useRef(null);
@@ -65,10 +59,6 @@ export default function Modal({ project, onClose }) {
 
         <div className="modal__body">
           <div className="modal__media">
-            <div className="browser-bar" aria-hidden="true">
-              <WindowDots />
-              <span className="browser-url">{hostOf(shown.link) || "preview"}</span>
-            </div>
             <img src={shown.image} alt={shown.title} />
           </div>
 
