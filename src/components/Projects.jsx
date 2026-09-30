@@ -2,6 +2,11 @@ import { Fragment } from "react";
 import { projects } from "../data.js";
 import WindowDots from "./WindowDots.jsx";
 
+function hostOf(link) {
+  try { return new URL(link).hostname.replace(/^www\./, ""); }
+  catch { return ""; }
+}
+
 // 2 cards per row on desktop; dividers span the full grid width between rows.
 const COLS = 2;
 const rows = [];
@@ -34,10 +39,14 @@ export default function Projects({ onOpen }) {
                   if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen(p); }
                 }}
               >
-                <div className="card__media" aria-hidden="true">
-                  <div className="imgbox"><img src={p.image} alt="" loading="lazy" /></div>
-                  <div className="card__caption">{p.caption}</div>
+              <div className="card__media" aria-hidden="true">
+                <div className="browser-bar">
+                  <WindowDots />
+                  <span className="browser-url">{hostOf(p.link) || "preview"}</span>
                 </div>
+                <div className="imgbox"><img src={p.image} alt="" loading="lazy" /></div>
+                <div className="card__caption">{p.caption}</div>
+              </div>
                 <div>
                   <div className="card__period">{p.period}</div>
                   <h3 className="card__title">{p.title}</h3>
