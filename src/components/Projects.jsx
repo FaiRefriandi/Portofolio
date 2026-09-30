@@ -44,7 +44,6 @@ export default function Projects({ onOpen }) {
                   <span className="browser-url">{hostOf(p.link) || "preview"}</span>
                 </div>
                 <div className="imgbox"><img src={p.image} alt="" loading="lazy" /></div>
-                <div className="card__caption">{p.caption}</div>
               </div>
                 <div>
                   <div className="card__period">{p.period}</div>
