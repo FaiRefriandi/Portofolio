@@ -470,23 +470,44 @@
 .about__rule { margin-top: var(--space-7); }
 
 .cards {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-7);
-  row-gap: var(--space-8);
 }
-@media (max-width: 800px) { .cards { grid-template-columns: 1fr; } }
-/* dashed divider above every card row except the first — the grid gap
-   breaks the line between columns, blueprint-style */
-.card:nth-child(n+3) {
-  border-top: 1px dashed var(--semantic-stroke);
-  padding-top: var(--space-7);
+/* vertical dashed divider dead-center between the two columns, running the
+   full grid height straight through the horizontal row dividers */
+.cards::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px dashed var(--semantic-stroke);
+  pointer-events: none;
 }
 @media (max-width: 800px) {
-  .card:nth-child(n+3) { border-top: 0; }
-  .card:nth-child(n+2) {
+  .cards { grid-template-columns: 1fr; }
+  /* single column: no middle to divide */
+  .cards::after { display: none; }
+}
+/* continuous dashed divider between card rows: spans the full grid width
+   (grid-column 1/-1) so the line runs unbroken straight through the
+   column gap, rail to rail */
+.cards__divider {
+  grid-column: 1 / -1;
+  border-top: 1px dashed var(--semantic-stroke);
+  margin-top: var(--space-2);
+  height: 0;
+}
+@media (max-width: 800px) {
+  /* single column: row dividers are hidden, every card after the first
+     carries its own top divider instead */
+  .cards__divider { display: none; }
+  .cards .card + .card {
     border-top: 1px dashed var(--semantic-stroke);
     padding-top: var(--space-7);
+    margin-top: var(--space-2);
   }
 }
 
