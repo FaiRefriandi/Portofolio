@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-// Must stay in sync with the exit transition in components.css (.modal__panel).
-const EXIT_MS = 240;
+// Must stay in sync with the exit transition in components.css (.modal,
+// .modal__panel, .modal__backdrop — 260ms).
+const EXIT_MS = 280;
 
 export default function Modal({ project, onClose }) {
   const closeRef = useRef(null);

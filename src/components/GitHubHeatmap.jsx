@@ -182,14 +182,10 @@ export default function GitHubHeatmap({ username, className = "" }) {
     return { cells, months, total: sum, numCols, year };
   }, [api, username]);
 
-  // Custom swipe scrollbar: the native ("classic") scrollbar is hidden and
-  // replaced with a slim themed thumb that mirrors the scroll position.
-  // It only renders when the grid actually overflows (mobile) and stays
-  // hidden on desktop where the full grid fits.
+  // The grid scrolls horizontally on mobile with the native scrollbar
+  // hidden — swipe to move, no slider indicator.
   const scrollRef = useRef(null);
-  const trackRef = useRef(null);
   const pinnedEnd = useRef(false);
-  const [bar, setBar] = useState(null);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -201,77 +197,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
       el.scrollLeft = el.scrollWidth;
       pinnedEnd.current = true;
     }
-    const update = () => {
-      const { scrollWidth, clientWidth, scrollLeft } = el;
-      if (scrollWidth <= clientWidth + 1) {
-        setBar((b) => (b === null ? b : null));
-        return;
-      }
-      const widthPct = (clientWidth / scrollWidth) * 100;
-      const maxScroll = scrollWidth - clientWidth;
-      const leftPct = maxScroll > 0 ? (scrollLeft / maxScroll) * (100 - widthPct) : 0;
-      const next = {
-        left: leftPct,
-        width: widthPct,
-        canLeft: scrollLeft > 2,
-        canRight: scrollLeft < maxScroll - 2,
-      };
-      setBar((b) =>
-        b &&
-        Math.abs(b.left - next.left) < 0.05 &&
-        Math.abs(b.width - next.width) < 0.05 &&
-        b.canLeft === next.canLeft &&
-        b.canRight === next.canRight
-          ? b
-          : next
-      );
-    };
-    update();
-    el.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(update) : null;
-    if (ro) ro.observe(el);
-    return () => {
-      el.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      if (ro) ro.disconnect();
-    };
   }, []);
-
-  // Drag the custom thumb to scroll (pointer events cover mouse + touch).
-  const onThumbPointerDown = (e) => {
-    const el = scrollRef.current;
-    const track = trackRef.current;
-    if (!el || !track) return;
-    e.preventDefault();
-    const startX = e.clientX;
-    const startScroll = el.scrollLeft;
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    const maxThumb = track.clientWidth - e.currentTarget.offsetWidth;
-    const move = (ev) => {
-      if (maxThumb > 0) el.scrollLeft = startScroll + ((ev.clientX - startX) / maxThumb) * maxScroll;
-    };
-    const up = () => {
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerup", up);
-      window.removeEventListener("pointercancel", up);
-    };
-    window.addEventListener("pointermove", move);
-    window.addEventListener("pointerup", up);
-    window.addEventListener("pointercancel", up);
-  };
-
-  // Tap / click on the track jumps the grid straight to that position.
-  const onTrackPointerDown = (e) => {
-    if (e.target !== e.currentTarget) return;
-    const el = scrollRef.current;
-    const track = trackRef.current;
-    if (!el || !track) return;
-    const rect = track.getBoundingClientRect();
-    if (rect.width <= 0) return;
-    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
-    el.scrollTo({ left: ratio * (el.scrollWidth - el.clientWidth), behavior: "smooth" });
-  };
 
   // Click / tap a day cell → floating bubble with that day's info.
   // Tapping the same cell again toggles it closed.
@@ -331,7 +257,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
           stays exactly the same size instead of being squished unevenly. */}
       <div
         ref={scrollRef}
-        className={`gh-heatmap__scroll${bar && bar.canLeft ? " gh-heatmap__scroll--more-left" : ""}${bar && bar.canRight ? " gh-heatmap__scroll--more-right" : ""}`}
+        className="gh-heatmap__scroll"
       >
         <div className="gh-heatmap__scroll-inner">
           {/* Labels use the exact same 53-column grid as the cells, so each label
@@ -377,21 +303,6 @@ export default function GitHubHeatmap({ username, className = "" }) {
           </div>
         </div>
       </div>
-
-      {bar && (
-        <div
-          ref={trackRef}
-          className="gh-heatmap__scrollbar"
-          onPointerDown={onTrackPointerDown}
-          aria-hidden="true"
-        >
-          <div
-            className="gh-heatmap__scrollbar-thumb"
-            style={{ left: `${bar.left}%`, width: `${bar.width}%` }}
-            onPointerDown={onThumbPointerDown}
-          />
-        </div>
-      )}
 
       {tip && (
         <div

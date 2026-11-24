@@ -202,31 +202,10 @@
 .gh-heatmap__total { color: var(--semantic-text-secondary); }
 /* Desktop: full 53-week grid, cells stretch evenly to fill the card. */
 .gh-heatmap__scroll { overflow-x: visible; min-width: 0; }
-/* Native ("classic") scrollbar is always hidden here — swipe position is
-   shown through the custom .gh-heatmap__scrollbar thumb instead. */
+/* Native ("classic") scrollbar is always hidden here — the grid is moved
+   by swiping, with no slider indicator. */
 .gh-heatmap__scroll { scrollbar-width: none; -ms-overflow-style: none; }
 .gh-heatmap__scroll::-webkit-scrollbar { display: none; }
-.gh-heatmap__scrollbar {
-  position: relative;
-  height: 4px;
-  margin-top: 10px;
-  border-radius: 999px;
-  background: var(--semantic-stroke);
-  cursor: pointer;
-  touch-action: none;
-}
-.gh-heatmap__scrollbar-thumb {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  min-width: 36px;
-  border-radius: 999px;
-  background: var(--semantic-text-tertiary);
-  cursor: grab;
-  transition: background 160ms ease;
-}
-.gh-heatmap__scrollbar-thumb:hover { background: var(--semantic-text-secondary); }
-.gh-heatmap__scrollbar-thumb:active { cursor: grabbing; background: var(--semantic-text); }
 .gh-heatmap__scroll-inner { width: 100%; min-width: 0; display: flex; flex-direction: column; gap: 0; }
 .gh-heatmap__months {
   display: grid;
@@ -316,21 +295,6 @@
     cursor: grab;
   }
   .gh-heatmap__scroll:active { cursor: grabbing; }
-  /* Edge fades hint that there is more grid to swipe toward. The mask stays
-     fixed while content scrolls underneath; each side only fades while there
-     is actually more content in that direction. */
-  .gh-heatmap__scroll--more-right {
-    mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
-  }
-  .gh-heatmap__scroll--more-left {
-    mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent);
-    -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent);
-  }
-  .gh-heatmap__scroll--more-left.gh-heatmap__scroll--more-right {
-    mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
-  }
   .gh-heatmap__scroll-inner { width: max-content; min-width: 100%; }
   .gh-heatmap__months,
   .gh-heatmap__grid {
@@ -535,19 +499,23 @@
   display: grid; place-items: center;
   padding: var(--space-7);
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity var(--motion-duration-instant) var(--motion-ease), visibility var(--motion-duration-instant) var(--motion-ease);
+  /* visibility only flips after the fade-out finishes, so the panel and
+     backdrop exit animations are never cut off mid-flight (that cut is
+     what made closing feel abrupt). */
+  transition: opacity 260ms var(--motion-ease), visibility 0s linear 260ms;
   overscroll-behavior: contain;
 }
-.modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; animation: modal-fade 200ms var(--motion-ease); }
+.modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; animation: modal-fade 300ms var(--motion-ease); }
 @keyframes modal-fade {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-.modal__backdrop { position: absolute; inset: 0; background: rgba(18, 18, 20, 0.58); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); border: 0; padding: 0; cursor: pointer; transition: backdrop-filter 240ms var(--motion-ease); }
-.modal.is-open .modal__backdrop { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: modal-blur-in 280ms var(--motion-ease); }
+.modal__backdrop { position: absolute; inset: 0; background-color: rgba(18, 18, 20, 0); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); border: 0; padding: 0; cursor: pointer; transition: background-color 260ms var(--motion-ease), backdrop-filter 260ms var(--motion-ease), -webkit-backdrop-filter 260ms var(--motion-ease); }
+.modal.is-open .modal__backdrop { background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: modal-blur-in 300ms var(--motion-ease); }
+.modal.is-closing .modal__backdrop { background-color: rgba(18, 18, 20, 0); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
 @keyframes modal-blur-in {
-  from { backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
-  to { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  from { background-color: rgba(18, 18, 20, 0); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
+  to { background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 }
 .modal__panel {
   position: relative; width: min(980px, 92vw); max-height: min(86vh, 820px); overflow: hidden;
@@ -559,13 +527,13 @@
   opacity: 0;
   transform: translateY(14px) scale(0.97);
   transition:
-    opacity 220ms var(--motion-ease),
-    transform 220ms var(--motion-ease);
+    opacity 260ms var(--motion-ease),
+    transform 260ms var(--motion-ease);
 }
 .modal.is-open .modal__panel {
   opacity: 1;
   transform: none;
-  animation: modal-in 280ms var(--motion-ease);
+  animation: modal-in 300ms var(--motion-ease);
 }
 .modal.is-closing .modal__panel {
   opacity: 0;
@@ -609,6 +577,7 @@
 .reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .modal { transition: none; }
   .modal.is-open { animation: none; }
   .modal__panel { transition: none; }
   .modal.is-open .modal__panel { animation: none; }
