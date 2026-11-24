@@ -18,6 +18,11 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  /* Remove the browser's blue tap flash on mobile: the tap highlight is
+     not part of the theme (there is no blue in tokens.css). Keyboard
+     :focus-visible outlines in global.css are kept for accessibility. */
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
 }
 
 a { color: var(--semantic-text); text-decoration: none; text-underline-offset: 3px; }

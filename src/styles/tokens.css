@@ -80,3 +80,19 @@
   --traffic-yellow: #48484c;
   --traffic-green: #2e2e31;
 }
+
+/* Mobile (<=700px): one step smaller across the whole type scale, so text
+   feels less crowded on narrow screens. Desktop values above are untouched.
+   Line-height stays 21px, so the smaller text also gets relatively more air. */
+@media (max-width: 700px) {
+  :root {
+    --font-size-xs: 12px;
+    --font-size-sm: 12px;
+    --font-size-md: 13px;
+    --font-size-lg: 14px;
+    --font-size-xl: 14px;
+    --font-size-2xl: 15px;
+    --font-size-3xl: 22px;
+    --font-size-4xl: 23px;
+  }
+}

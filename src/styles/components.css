@@ -701,3 +701,12 @@
   .modal__backdrop { transition: none; }
   .modal.is-open .modal__backdrop { animation: none; }
 }
+
+/* Mobile (<=700px): smaller display sizes that bypass the token scale.
+   Hero name was clamped to a 26px minimum even on a 390px screen. */
+@media (max-width: 700px) {
+  .brand { font-size: 18px; }
+  .hero__name, .name-row { font-size: 22px; }
+  .modal__title { font-size: 16px; }
+  .loading__counter { font-size: 24px; }
+}
