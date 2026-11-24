@@ -499,22 +499,26 @@
   display: grid; place-items: center;
   padding: var(--space-7);
   opacity: 0; visibility: hidden; pointer-events: none;
-  /* visibility only flips after the fade-out finishes, so the panel and
-     backdrop exit animations are never cut off mid-flight (that cut is
-     what made closing feel abrupt). */
-  transition: opacity 260ms var(--motion-ease), visibility 0s linear 260ms;
   overscroll-behavior: contain;
 }
-.modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; animation: modal-fade 300ms var(--motion-ease); }
-@keyframes modal-fade {
+/* The container itself never fades: animating opacity on this ancestor
+   turns it into the backdrop root, so the backdrop-filter inside it is
+   isolated from the page behind and the blur only pops in once the fade
+   finishes (~300ms late). Only the backdrop and the panel fade, each
+   on its own. Closing stays smooth because the children fade out during
+   the 280ms unmount delay in Modal.jsx. */
+.modal.is-open, .modal.is-closing { opacity: 1; visibility: visible; pointer-events: auto; }
+/* Blur radius is fixed, never animated: animating it repaints the whole page
+   behind the modal every frame. Only opacity fades, and it fades with a
+   keyframe animation on open: transitions never run when the modal mounts
+   straight into .is-open, so the backdrop used to snap in instantly while
+   the panel animated in. On close the plain transition takes over. */
+.modal__backdrop { position: absolute; inset: 0; background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 0; padding: 0; cursor: pointer; opacity: 0; transition: opacity 260ms var(--motion-ease); }
+.modal.is-open .modal__backdrop { opacity: 1; animation: modal-backdrop-in 260ms var(--motion-ease); }
+@keyframes modal-backdrop-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-/* Blur is fixed, never animated: animating the blur radius repaints the whole
-   page behind the modal every frame, so the blur visibly lagged the panel.
-   Only opacity fades (compositor-cheap), the blur is already at full strength. */
-.modal__backdrop { position: absolute; inset: 0; background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 0; padding: 0; cursor: pointer; opacity: 0; transition: opacity 260ms var(--motion-ease); }
-.modal.is-open .modal__backdrop { opacity: 1; }
 .modal.is-closing .modal__backdrop { opacity: 0; }
 .modal__panel {
   position: relative; width: min(980px, 92vw); max-height: min(86vh, 820px); overflow: hidden;
@@ -578,6 +582,7 @@
   .reveal { opacity: 1; transform: none; transition: none; }
   .modal { transition: none; }
   .modal.is-open { animation: none; }
+  .modal.is-open .modal__backdrop { animation: none; }
   .modal__panel { transition: none; }
   .modal.is-open .modal__panel { animation: none; }
   .modal__backdrop { transition: none; }
