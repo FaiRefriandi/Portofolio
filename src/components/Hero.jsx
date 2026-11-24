@@ -19,7 +19,7 @@ export default function Hero() {
             <div className="name-row">
               <h1 className="hero__name">{profile.name}</h1>
               <dotlottie-player
-                src="https://lottie.host/07f05192-a1b7-4133-a26b-19860df7de6a/CEA68admAD.lottie"
+                src="assets/cat-white.lottie"
                 autoplay
                 loop
                 speed="1"

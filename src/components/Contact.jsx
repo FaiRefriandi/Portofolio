@@ -29,7 +29,7 @@ export default function Contact() {
           <span className="kicker">Bandung · Remote</span>
         </div>
         <div className="band__body" style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between" }}>
-          <span className="mono" style={{ fontSize: 12, color: "var(--semantic-text-tertiary)", lineHeight: 1.6 }}>Open for freelance & collaboration — quick reply via email.</span>
+          <span className="mono" style={{ fontSize: "var(--font-size-sm)", color: "var(--semantic-text-tertiary)", lineHeight: 1.6 }}>Open for freelance & collaboration — quick reply via email.</span>
           <a className="btn btn--primary" href="mailto:frefriandi@gmail.com">Email me →</a>
         </div>
       </div>

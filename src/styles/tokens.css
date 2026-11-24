@@ -81,18 +81,18 @@
   --traffic-green: #2e2e31;
 }
 
-/* Mobile (<=700px): one step smaller across the whole type scale, so text
+/* Mobile (<=700px): two steps smaller across the whole type scale, so text
    feels less crowded on narrow screens. Desktop values above are untouched.
    Line-height stays 21px, so the smaller text also gets relatively more air. */
 @media (max-width: 700px) {
   :root {
-    --font-size-xs: 12px;
-    --font-size-sm: 12px;
-    --font-size-md: 13px;
-    --font-size-lg: 14px;
-    --font-size-xl: 14px;
-    --font-size-2xl: 15px;
-    --font-size-3xl: 22px;
-    --font-size-4xl: 23px;
+    --font-size-xs: 11px;
+    --font-size-sm: 11px;
+    --font-size-md: 12px;
+    --font-size-lg: 13px;
+    --font-size-xl: 13px;
+    --font-size-2xl: 14px;
+    --font-size-3xl: 20px;
+    --font-size-4xl: 21px;
   }
 }
