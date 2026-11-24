@@ -505,8 +505,10 @@
    turns it into the backdrop root, so the backdrop-filter inside it is
    isolated from the page behind and the blur only pops in once the fade
    finishes (~300ms late). Only the backdrop and the panel fade, each
-   on its own. Closing stays smooth because the children fade out during
-   the 280ms unmount delay in Modal.jsx. */
+   on its own. The exit state is applied in the same render as the close
+   (`closing` is derived in Modal.jsx, not set in an effect), so the
+   children fade out during the 280ms unmount delay without a one-frame
+   snap to the hidden container state. */
 .modal.is-open, .modal.is-closing { opacity: 1; visibility: visible; pointer-events: auto; }
 /* Blur radius is fixed, never animated: animating it repaints the whole page
    behind the modal every frame. Only opacity fades, and it fades with a
@@ -540,7 +542,9 @@
 }
 .modal.is-closing .modal__panel {
   opacity: 0;
-  transform: translateY(10px) scale(0.98);
+  /* Same resting transform as the base state, so the exit transition has
+     exactly one target and never reverses direction mid-flight. */
+  transform: translateY(14px) scale(0.97);
 }
 @keyframes modal-in {
   from { opacity: 0; transform: translateY(18px) scale(0.96); }

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-// Must stay in sync with the exit transition in components.css (.modal,
-// .modal__panel, .modal__backdrop — 260ms).
+// Unmount delay for the exit transition in components.css (.modal__panel,
+// .modal__backdrop — 260ms), plus a little slack so the fade-out is never
+// cut off mid-flight.
 const EXIT_MS = 280;
 
 export default function Modal({ project, onClose }) {
@@ -10,20 +11,24 @@ export default function Modal({ project, onClose }) {
   // `shown` lags behind `project` on close so the exit animation can play
   // before the content unmounts.
   const [shown, setShown] = useState(null);
-  const [closing, setClosing] = useState(false);
+  // Derived during render, never set in an effect: the old code set `closing`
+  // inside useEffect, so on close there was one render where the modal had
+  // neither `is-open` nor `is-closing` — the container snapped to opacity 0
+  // / visibility hidden for a frame, then snapped back visible and the
+  // panel restarted its transition toward a different transform. That
+  // one-frame vanish plus restart is what made closing look choppy and
+  // shaky. Now `is-closing` applies in the very same commit as the close.
   const open = Boolean(project);
+  const closing = !open && shown !== null;
 
   useEffect(() => {
     if (project) {
       clearTimeout(timerRef.current);
-      setClosing(false);
       setShown(project);
     } else if (shown) {
-      setClosing(true);
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       timerRef.current = setTimeout(() => {
         setShown(null);
-        setClosing(false);
       }, reduce ? 0 : EXIT_MS);
     }
     return () => clearTimeout(timerRef.current);
@@ -52,7 +57,7 @@ export default function Modal({ project, onClose }) {
   if (!shown) return null;
 
   return (
-    <div className={`modal${open && !closing ? " is-open" : ""}${closing ? " is-closing" : ""}`} role="dialog" aria-modal="true" aria-label={shown.title}>
+    <div className={`modal${open ? " is-open" : ""}${closing ? " is-closing" : ""}`} role="dialog" aria-modal="true" aria-label={shown.title}>
       <button className="modal__backdrop" aria-label="Close modal" onClick={onClose} />
 
       <div className="modal__panel" role="document">
