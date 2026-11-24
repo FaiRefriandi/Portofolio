@@ -60,8 +60,9 @@ export default function App() {
       <div id="top" aria-hidden="true" />
       <Header />
 
+      <Hero />
+
       <main className="wrap" role="main">
-        <Hero />
         <Projects onOpen={setActiveProject} />
         <Education />
         <Contact />

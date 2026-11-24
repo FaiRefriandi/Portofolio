@@ -55,11 +55,12 @@
   border: 0;
   border-radius: 0;
   background: transparent;
-  /* full-bleed: the hero breaks out of the centered .wrap column so the
-     cover and glass touch the left and right edges of the screen */
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
+  /* full-bleed: Hero now sits outside the centered .wrap column, so it is
+     exactly the viewport width. No viewport-width breakout: that unit counts
+     the scrollbar, which made the page wider than the screen, shrank the
+     mobile layout, and left the empty strip on the right. */
+  width: 100%;
+  padding-top: var(--header-h);
 }
 .hero__cover {
   position: relative;
@@ -103,10 +104,16 @@
   margin: 0 auto;
   padding: 60px var(--space-8) var(--space-8);
 }
-/* Liquid glass strip (simple-liquid-glass): a clear, barely-tinted lens over
-   the bottom of the banner. It dissolves with a long mask fade instead of a
-   hard gradient edge, so there is no visible cut where the glass ends. */
-.hero__glass {
+/* Top-only glass over the bottom of the banner: plain CSS backdrop-filter
+   reads the live page, so the moving GIF genuinely shows through. The
+   library instead rendered a frozen capture of the banner, and most of
+   its 144px pane hung below the banner where there is no backdrop at
+   all, so it came out as a dark slab. Light blur and a faint tint keep
+   it clear glass instead of smoke; the tint fades to transparent with
+   the gradient, so there is no edge line, no border and no shadow
+   anywhere on the hero. */
+.hero__body::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -114,14 +121,11 @@
   height: 144px;
   pointer-events: none;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 96%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 96%);
-}
-.hero__glass-panel {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.01) 78%, rgba(255, 255, 255, 0) 100%);
+  -webkit-backdrop-filter: blur(8px) saturate(160%) brightness(1.08);
+  backdrop-filter: blur(8px) saturate(160%) brightness(1.08);
 }
 @media (max-width: 700px) {
   .hero__body {
@@ -133,7 +137,7 @@
     gap: var(--space-6);
     padding: 62px var(--space-7) var(--space-7);
   }
-  .hero__glass { height: 128px; }
+  .hero__body::before { height: 128px; }
 }
 
 .hero__profile {
