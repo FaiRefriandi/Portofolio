@@ -510,13 +510,12 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
-.modal__backdrop { position: absolute; inset: 0; background-color: rgba(18, 18, 20, 0); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); border: 0; padding: 0; cursor: pointer; transition: background-color 260ms var(--motion-ease), backdrop-filter 260ms var(--motion-ease), -webkit-backdrop-filter 260ms var(--motion-ease); }
-.modal.is-open .modal__backdrop { background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: modal-blur-in 300ms var(--motion-ease); }
-.modal.is-closing .modal__backdrop { background-color: rgba(18, 18, 20, 0); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
-@keyframes modal-blur-in {
-  from { background-color: rgba(18, 18, 20, 0); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
-  to { background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-}
+/* Blur is fixed, never animated: animating the blur radius repaints the whole
+   page behind the modal every frame, so the blur visibly lagged the panel.
+   Only opacity fades (compositor-cheap), the blur is already at full strength. */
+.modal__backdrop { position: absolute; inset: 0; background-color: rgba(18, 18, 20, 0.58); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 0; padding: 0; cursor: pointer; opacity: 0; transition: opacity 260ms var(--motion-ease); }
+.modal.is-open .modal__backdrop { opacity: 1; }
+.modal.is-closing .modal__backdrop { opacity: 0; }
 .modal__panel {
   position: relative; width: min(980px, 92vw); max-height: min(86vh, 820px); overflow: hidden;
   background: var(--semantic-bg-subtle);
@@ -582,7 +581,6 @@
   .modal__panel { transition: none; }
   .modal.is-open .modal__panel { animation: none; }
   .modal__backdrop { transition: none; }
-  .modal.is-open .modal__backdrop { animation: none; }
 }
 
 /* Mobile (<=700px): smaller display sizes that bypass the token scale.
