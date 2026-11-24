@@ -80,19 +80,30 @@
 }
 .hero__body {
   position: relative; /* anchor for the absolutely-positioned avatar */
+  z-index: 2; /* sits above the cover so the glass panel overlaps the banner */
   display: flex;
   /* flex-start: profile & heatmap both start at the content top, so the name
      hugs the avatar instead of being pushed down by the taller heatmap */
   align-items: flex-start;
   gap: var(--space-8);
-  padding: 60px 0 var(--space-8);
+  /* glass smoke: pulled up over the banner so the moving GIF shows through
+     blurred behind the panel instead of a solid background */
+  margin-top: -40px;
+  padding: 60px var(--space-8) var(--space-8);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(10, 10, 12, 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 @media (max-width: 700px) {
   .hero__body {
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-6);
-    padding: 62px 0 var(--space-7);
+    margin-top: -32px;
+    padding: 62px var(--space-7) var(--space-7);
   }
 }
 
@@ -105,8 +116,8 @@
 }
 .avatar {
   position: absolute;
-  top: -60px;                  /* half the avatar straddles the cover (Twitter-style cut) */
-  left: 0;                     /* flush with the content column (rails provide the inset) */
+  top: -72px;                  /* lifted: avatar now sits mostly over the banner, on top of the glass panel */
+  left: var(--space-8);        /* aligns with the name inside the glass panel's padding */
   width: 120px; height: 120px;
   border-radius: 50%;          /* Twitter-style circle */
   overflow: hidden;
@@ -123,8 +134,8 @@
 @media (max-width: 700px) {
   .avatar {
     width: 120px; height: 120px;
-    top: -60px;
-    left: 0;
+    top: -72px;
+    left: var(--space-7);
     border-width: 3px;
   }
 }
