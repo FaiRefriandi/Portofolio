@@ -7,9 +7,6 @@ export const profile = {
   location: "Bandung, Indonesia",
 };
 
-export const aboutText =
-  "Hello, I'm Fai Refriandi, a Computer Science graduate from UNIKOM. I build websites, Android apps, and integrated software systems, with a growing focus on Agentic AI — autonomous systems that reason, use tools, and execute complex workflows. I'm open to opportunities to contribute to meaningful projects and collaborate with development teams.";
-
 export const projects = [
   {
     title: "Flowzup Social App",
