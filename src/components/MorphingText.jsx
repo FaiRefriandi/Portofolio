@@ -4,9 +4,8 @@
 // plus filter SVG threshold supaya hurufnya meleleh seperti gooey.
 // Diadaptasi ke JSX + CSS biasa (tanpa Tailwind) dan ke hero:
 // - Sizer tersembunyi mengikuti teks yang sedang dominan, supaya lebar
-//   mengikuti panjang teks dan kucing di sebelahnya ikut bergerak.
-// - Menerima catRef supaya kucing ikut morph sinkron di loop yang sama.
-//   Kucing di-style lewat custom property supaya transform aslinya tetap.
+//   mengikuti panjang teks.
+// - Filter threshold hanya aktif saat morphing; saat diam dilepas supaya teks tajam.
 // - Hormat reduced motion dan menunggu halaman selesai loading.
 
 import { useCallback, useEffect, useRef } from "react";
@@ -16,7 +15,7 @@ import { usePageLoaded } from "./AnimatedText.jsx";
 const morphTime = 1.5;
 const cooldownTime = 3;
 
-const useMorphingText = (texts, catRef) => {
+const useMorphingText = (texts) => {
   const textIndexRef = useRef(0);
   const morphRef = useRef(0);
   const cooldownRef = useRef(0);
@@ -55,14 +54,8 @@ const useMorphingText = (texts, catRef) => {
             : texts[(textIndexRef.current + 1) % texts.length];
       }
 
-      if (catRef && catRef.current) {
-        const peak = Math.sin(fraction * Math.PI);
-        catRef.current.style.setProperty("--morph-y", `${(-peak * 8).toFixed(2)}px`);
-        catRef.current.style.setProperty("--morph-scale", `${(1 + peak * 0.1).toFixed(3)}`);
-        catRef.current.style.filter = `blur(${(peak * 3).toFixed(2)}px)`;
-      }
     },
-    [texts, catRef]
+    [texts]
   );
 
   const doMorph = useCallback(() => {
@@ -100,12 +93,7 @@ const useMorphingText = (texts, catRef) => {
     if (sizerRef.current) {
       sizerRef.current.textContent = texts[textIndexRef.current % texts.length];
     }
-    if (catRef && catRef.current) {
-      catRef.current.style.setProperty("--morph-y", "0px");
-      catRef.current.style.setProperty("--morph-scale", "1");
-      catRef.current.style.filter = "none";
-    }
-  }, [texts, catRef]);
+  }, [texts]);
 
   const loaded = usePageLoaded();
   const reduce = useReducedMotion();
@@ -153,9 +141,9 @@ const SvgFilters = () => (
   </svg>
 );
 
-export function MorphingText({ texts, catRef, className }) {
+export function MorphingText({ texts, className }) {
   const reduce = useReducedMotion();
-  const { text1Ref, text2Ref, sizerRef, containerRef } = useMorphingText(texts, catRef);
+  const { text1Ref, text2Ref, sizerRef, containerRef } = useMorphingText(texts);
 
   if (reduce) {
     return <span className={className}>{texts[0]}</span>;

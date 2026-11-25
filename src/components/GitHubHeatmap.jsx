@@ -84,7 +84,7 @@ function countText(count) {
   return `${count} contributions`;
 }
 
-export default function GitHubHeatmap({ username, className = "", catRef }) {
+export default function GitHubHeatmap({ username, className = "" }) {
   // Start from the bundled snapshot (real data, zero flash), then keep it fresh
   // by polling the live API. The generated pattern is only a last resort.
   const [api, setApi] = useState(bundled);
@@ -249,7 +249,6 @@ export default function GitHubHeatmap({ username, className = "", catRef }) {
       <div className="gh-heatmap__title-row">
         <FadeUp tag="h2" inView>github stats.</FadeUp>
         <dotlottie-player
-          ref={catRef}
           src="assets/cat-white.lottie"
           autoplay
           loop

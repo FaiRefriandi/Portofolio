@@ -371,11 +371,11 @@
 .gh-heatmap__title-row { display: flex; align-items: baseline; gap: 0; }
 .gh-heatmap__title-row dotlottie-player {
   flex-shrink: 0;
-  width: clamp(42px, 6vw, 56px);
-  height: clamp(30px, 4.3vw, 40px);
+  width: clamp(55px, 9.45vw, 84px);
+  height: clamp(39px, 6.75vw, 60px);
   display: block;
   margin-left: 2px;
-  transform: translateY(calc(18% + 1px)) translateY(var(--morph-y, 0px)) scale(var(--morph-scale, 1));
+  transform: translateX(-5px) translateY(calc(18% + 1px));
   will-change: transform;
   overflow: visible;
 }

@@ -2,7 +2,7 @@ import { profile } from "../data.js";
 import { FadeUp } from "./AnimatedText.jsx";
 import { MorphingText } from "./MorphingText.jsx";
 
-export default function Hero({ catRef }) {
+export default function Hero() {
 
   return (
     <section className="hero reveal" aria-label="Profile">
@@ -20,7 +20,7 @@ export default function Hero({ catRef }) {
             </div>
             <div className="hero__content">
               <div className="name-row">
-                <h1 className="hero__name"><MorphingText texts={[profile.name, "Morphkite"]} catRef={catRef} /></h1>
+                <h1 className="hero__name"><MorphingText texts={[profile.name, "Morphkite"]} /></h1>
               </div>
               <FadeUp className="hero__subtitle" delay={0.15}>{profile.subtitle}</FadeUp>
               <FadeUp className="hero__about" delay={0.3}>
