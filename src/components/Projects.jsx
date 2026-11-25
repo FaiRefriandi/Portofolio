@@ -15,12 +15,7 @@ for (let i = 0; i < projects.length; i += COLS) rows.push(projects.slice(i, i + 
 export default function Projects({ onOpen }) {
   return (
     <section id="projects" className="section reveal">
-      <div className="section-head">
-        <div className="section-head__left">
-          <h2>Projects</h2>
-        </div>
-        <span className="count">{projects.length} selected</span>
-      </div>
+      <h2>Projects</h2>
 
       <div className="cards" role="list">
         {rows.map((row, ri) => (

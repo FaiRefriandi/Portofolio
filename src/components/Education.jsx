@@ -3,12 +3,7 @@ import { education } from "../data.js";
 export default function Education() {
   return (
     <section id="education" className="section reveal">
-      <div className="section-head">
-        <div className="section-head__left">
-          <h2>Education</h2>
-        </div>
-        <span className="count">Timeline</span>
-      </div>
+      <h2>Education</h2>
 
       <div className="band band--paper">
         <div className="band__body">
