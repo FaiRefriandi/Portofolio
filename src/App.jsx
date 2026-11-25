@@ -76,7 +76,7 @@ export default function App() {
         <GitHubHeatmap username={profile.github} />
       </main>
 
-      <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto", marginBottom: "48px" }} />
+      <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto", marginBottom: "96px" }} />
 
       <Modal project={activeProject} onClose={() => setActiveProject(null)} />
     </>
