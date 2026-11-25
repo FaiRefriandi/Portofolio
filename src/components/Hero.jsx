@@ -1,10 +1,8 @@
 import { profile } from "../data.js";
-import { useRef } from "react";
 import { FadeUp } from "./AnimatedText.jsx";
 import { MorphingText } from "./MorphingText.jsx";
 
-export default function Hero() {
-  const catRef = useRef(null);
+export default function Hero({ catRef }) {
 
   return (
     <section className="hero reveal" aria-label="Profile">
@@ -23,14 +21,6 @@ export default function Hero() {
             <div className="hero__content">
               <div className="name-row">
                 <h1 className="hero__name"><MorphingText texts={[profile.name, "Morphkite"]} catRef={catRef} /></h1>
-                <dotlottie-player
-                  ref={catRef}
-                  src="assets/cat-white.lottie"
-                  autoplay
-                  loop
-                  speed="1"
-                  aria-hidden="true"
-                />
               </div>
               <FadeUp className="hero__subtitle" delay={0.15}>{profile.subtitle}</FadeUp>
               <FadeUp className="hero__about" delay={0.3}>

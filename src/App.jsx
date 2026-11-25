@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import Projects from "./components/Projects.jsx";
@@ -11,6 +11,7 @@ import { profile } from "./data.js";
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
+  const catRef = useRef(null);
 
   useEffect(() => {
     // block right-click / long-press "save image" on images only (page text
@@ -67,12 +68,12 @@ export default function App() {
       <div id="top" aria-hidden="true" />
       <Header />
 
-      <Hero />
+      <Hero catRef={catRef} />
 
       <main className="wrap" role="main">
         <FindMeAt />
         <section className="section reveal">
-          <GitHubHeatmap username={profile.github} />
+          <GitHubHeatmap username={profile.github} catRef={catRef} />
         </section>
         <Projects onOpen={setActiveProject} />
       </main>

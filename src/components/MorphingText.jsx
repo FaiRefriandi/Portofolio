@@ -25,12 +25,18 @@ const useMorphingText = (texts, catRef) => {
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
   const sizerRef = useRef(null);
+  const containerRef = useRef(null);
 
   const setStyles = useCallback(
     (fraction) => {
       const current1 = text1Ref.current;
       const current2 = text2Ref.current;
       if (!current1 || !current2) return;
+
+      // Filter threshold (gooey) hanya saat morphing; saat diam dilepas di doCooldown.
+      if (containerRef.current) {
+        containerRef.current.style.filter = "url(#threshold)";
+      }
 
       current2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
       current2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
@@ -79,6 +85,10 @@ const useMorphingText = (texts, catRef) => {
 
   const doCooldown = useCallback(() => {
     morphRef.current = 0;
+    // Saat diam: lepas filter threshold supaya teks tajam, tanpa raster filter.
+    if (containerRef.current) {
+      containerRef.current.style.filter = "none";
+    }
     const current1 = text1Ref.current;
     const current2 = text2Ref.current;
     if (current1 && current2) {
@@ -118,7 +128,7 @@ const useMorphingText = (texts, catRef) => {
     };
   }, [doMorph, doCooldown, reduce, loaded]);
 
-  return { text1Ref, text2Ref, sizerRef };
+  return { text1Ref, text2Ref, sizerRef, containerRef };
 };
 
 const SvgFilters = () => (
@@ -145,14 +155,14 @@ const SvgFilters = () => (
 
 export function MorphingText({ texts, catRef, className }) {
   const reduce = useReducedMotion();
-  const { text1Ref, text2Ref, sizerRef } = useMorphingText(texts, catRef);
+  const { text1Ref, text2Ref, sizerRef, containerRef } = useMorphingText(texts, catRef);
 
   if (reduce) {
     return <span className={className}>{texts[0]}</span>;
   }
 
   return (
-    <span className={className ? `morphing-text ${className}` : "morphing-text"}>
+    <span ref={containerRef} className={className ? `morphing-text ${className}` : "morphing-text"}>
       <span ref={sizerRef} className="morphing-text__sizer" aria-hidden="true">
         {texts[0]}
       </span>
