@@ -1,8 +1,10 @@
 import { profile } from "../data.js";
-import { FadeUp, MorphName, MorphCat, useMorphIndex } from "./AnimatedText.jsx";
+import { useRef } from "react";
+import { FadeUp } from "./AnimatedText.jsx";
+import { MorphingText } from "./MorphingText.jsx";
 
 export default function Hero() {
-  const morphIndex = useMorphIndex(2, 3000);
+  const catRef = useRef(null);
 
   return (
     <section className="hero reveal" aria-label="Profile">
@@ -20,16 +22,15 @@ export default function Hero() {
             </div>
             <div className="hero__content">
               <div className="name-row">
-                <h1 className="hero__name"><MorphName phrases={[profile.name, "Morphkite"]} index={morphIndex} /></h1>
-                <MorphCat index={morphIndex}>
-                  <dotlottie-player
-                    src="assets/cat-white.lottie"
-                    autoplay
-                    loop
-                    speed="1"
-                    aria-hidden="true"
-                  />
-                </MorphCat>
+                <h1 className="hero__name"><MorphingText texts={[profile.name, "Morphkite"]} catRef={catRef} /></h1>
+                <dotlottie-player
+                  ref={catRef}
+                  src="assets/cat-white.lottie"
+                  autoplay
+                  loop
+                  speed="1"
+                  aria-hidden="true"
+                />
               </div>
               <FadeUp className="hero__subtitle" delay={0.15}>{profile.subtitle}</FadeUp>
               <FadeUp className="hero__about" delay={0.3}>

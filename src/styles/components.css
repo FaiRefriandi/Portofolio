@@ -216,7 +216,7 @@
   min-height: 1.5em;
   display: block;
   margin-left: -0.4em;
-  transform: translateX(-4px) translateY(calc(18% + 1px));
+  transform: translateX(-4px) translateY(calc(18% + 1px)) translateY(var(--morph-y, 0px)) scale(var(--morph-scale, 1));
   will-change: transform;
   overflow: visible;
 }
@@ -624,6 +624,12 @@
 .footer__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin-top: 8px; }
 .footer__links a { font-family: var(--font-family-stack); font-size: var(--font-size-xs); letter-spacing: 0.06em; color: var(--semantic-text-secondary); text-decoration: none; line-height: var(--font-line-height-base); }
 .footer__links a:hover { color: var(--semantic-text); }
+
+/* MorphingText (diadaptasi dari Magic UI). */
+.morphing-text { display: inline-block; position: relative; filter: url(#threshold) blur(0.6px); }
+.morphing-text__sizer { visibility: hidden; white-space: nowrap; }
+.morphing-text__layer { position: absolute; top: 0; left: 0; white-space: nowrap; }
+.morphing-text__filters { position: fixed; width: 0; height: 0; }
 @media (prefers-reduced-motion: reduce) {
   .hello-effect__stroke { stroke-dashoffset: 0; animation: none; }
 }
