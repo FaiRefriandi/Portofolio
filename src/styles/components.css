@@ -1,8 +1,8 @@
 .site-header {
   position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 40;
-  /* Glassmorphism mengikuti konsep glass hero: gradient putih tipis +
-     backdrop-filter, tanpa border, garis tepi, atau shadow */
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.01) 78%, rgba(255, 255, 255, 0) 100%);
+  /* Pure glassmorphism: latar kaca seragam + backdrop-filter,
+     tanpa border atau shadow */
+  background: rgba(255, 255, 255, 0.08);
   -webkit-backdrop-filter: blur(8px) saturate(160%) brightness(1.08);
   backdrop-filter: blur(8px) saturate(160%) brightness(1.08);
   border: 0;
@@ -64,9 +64,10 @@
   /* full-bleed: Hero now sits outside the centered .wrap column, so it is
      exactly the viewport width. No viewport-width breakout: that unit counts
      the scrollbar, which made the page wider than the screen, shrank the
-     mobile layout, and left the empty strip on the right. */
+     mobile layout, and left the empty strip on the right.
+     Banner starts at the very top, under the fixed glass header, so the
+     cover GIF shows through the header. */
   width: 100%;
-  padding-top: var(--header-h);
 }
 .hero__cover {
   position: relative;
