@@ -212,7 +212,7 @@
   min-height: 1.5em;
   display: block;
   margin-left: -0.4em;
-  transform: translateY(calc(18% + 2px));
+  transform: translateY(calc(18% + 1px));
   will-change: transform;
   overflow: visible;
 }
