@@ -28,6 +28,10 @@ export default function Hero() {
                 />
               </div>
               <div className="hero__subtitle">{profile.subtitle}</div>
+              <div className="hero__about">
+                <h2>About me</h2>
+                <p>Zup! I'm Fai, a full-stack builder obsessed with autonomous agents, emerging tech, and turning caffeine into production code. I spend most of my compute experimenting with bleeding-edge architectures and shipping cool projects.</p>
+              </div>
             </div>
           </div>
         </div>
