@@ -73,12 +73,6 @@ export default function Modal({ project, onClose }) {
             <h3 className="modal__title">{shown.title}</h3>
             <p className="modal__desc">{shown.description}</p>
 
-            <div className="chips" style={{ marginTop: 14 }} aria-label="Tech stack">
-              {shown.tech.map((t) => (
-                <span key={t} className="chip">{t}</span>
-              ))}
-            </div>
-
             {shown.link ? (
               <div style={{ marginTop: 16 }}>
                 <a href={shown.link} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
