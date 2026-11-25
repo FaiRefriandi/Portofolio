@@ -671,3 +671,39 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
   .modal__title { font-size: 15px; }
   .gh-heatmap__tip span { font-size: 11px; }
 }
+
+/* Find Me At: monochrome social chips. Icons come from svgl.app; the
+   filter forces every brand mark to a pure white silhouette so the row
+   reads black and white on the AMOLED background. */
+.find-me-at__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.find-me-at__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--semantic-stroke);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--font-family-stack);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--semantic-text);
+  line-height: 1;
+  text-decoration: none;
+}
+.find-me-at__chip:hover {
+  background: var(--semantic-bg-subtle);
+  text-decoration: none;
+}
+.find-me-at__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}

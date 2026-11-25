@@ -5,6 +5,7 @@ import Projects from "./components/Projects.jsx";
 import Modal from "./components/Modal.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import GitHubHeatmap from "./components/GitHubHeatmap.jsx";
+import FindMeAt from "./components/FindMeAt.jsx";
 import { profile } from "./data.js";
 
 export default function App() {
@@ -68,6 +69,7 @@ export default function App() {
       <Hero />
 
       <main className="wrap" role="main">
+        <FindMeAt />
         <Projects onOpen={setActiveProject} />
         <GitHubHeatmap username={profile.github} />
       </main>
