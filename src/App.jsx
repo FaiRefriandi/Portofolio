@@ -4,7 +4,6 @@ import Hero from "./components/Hero.jsx";
 import Projects from "./components/Projects.jsx";
 import Education from "./components/Education.jsx";
 import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
 import Modal from "./components/Modal.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 
@@ -68,8 +67,6 @@ export default function App() {
         <Education />
         <Contact />
       </main>
-
-      <Footer />
 
       <Modal project={activeProject} onClose={() => setActiveProject(null)} />
     </>
