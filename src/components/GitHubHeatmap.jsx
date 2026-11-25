@@ -245,6 +245,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
 
   return (
     <div className={`gh-heatmap ${className}`} style={{ "--gh-cols": numCols }}>
+      <h2>This is real btw!</h2>
       <div className="gh-heatmap__head">
         <span className="gh-heatmap__label">GitHub contributions</span>
         <span className="gh-heatmap__total">
