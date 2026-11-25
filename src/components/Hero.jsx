@@ -1,5 +1,5 @@
 import { profile } from "../data.js";
-import { FadeUp, StaggerWords } from "./AnimatedText.jsx";
+import { FadeUp, MorphName } from "./AnimatedText.jsx";
 
 export default function Hero() {
 
@@ -19,7 +19,7 @@ export default function Hero() {
             </div>
             <div className="hero__content">
               <div className="name-row">
-                <h1 className="hero__name"><StaggerWords text={profile.name} /></h1>
+                <h1 className="hero__name"><MorphName phrases={[profile.name, "Morphkite"]} /></h1>
                 <dotlottie-player
                   src="assets/cat-white.lottie"
                   autoplay

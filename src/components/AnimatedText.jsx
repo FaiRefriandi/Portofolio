@@ -64,6 +64,47 @@ export function StaggerWords({ text }) {
   );
 }
 
+// Nama hero yang morphing antara dua frasa (mis. "Fai Refriandi" dan
+// "Morphkite") tiap beberapa detik. Kedua frasa ditumpuk di satu sel grid
+// supaya lebar tidak berubah saat morph, jadi elemen di sebelah nama tidak
+// bergeser. Kalau reduced motion, tampilkan frasa pertama saja.
+export function MorphName({ phrases = ["Fai Refriandi", "Morphkite"], intervalMs = 3000 }) {
+  const reduce = useReducedMotion();
+  const loaded = usePageLoaded();
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (reduce || !loaded) return undefined;
+    const id = setInterval(() => setIndex((i) => (i + 1) % phrases.length), intervalMs);
+    return () => clearInterval(id);
+  }, [reduce, loaded, intervalMs, phrases.length]);
+
+  if (reduce) return <>{phrases[0]}</>;
+
+  return (
+    <span style={{ display: "inline-grid", verticalAlign: "top" }}>
+      {phrases.map((text, i) => (
+        <motion.span
+          key={text}
+          aria-hidden={i !== index}
+          style={{ gridArea: "1 / 1", display: "inline-block", willChange: "transform, opacity, filter" }}
+          initial={false}
+          animate={
+            !loaded
+              ? { opacity: 0, y: 16, filter: "blur(4px)" }
+              : i === index
+                ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                : { opacity: 0, y: -12, filter: "blur(6px)" }
+          }
+          transition={{ duration: 0.55, ease: EASE }}
+        >
+          {text}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
 const MOTION_TAGS = {
   div: motion.div,
   h1: motion.h1,
