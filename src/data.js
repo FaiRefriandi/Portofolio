@@ -81,10 +81,10 @@ export const contacts = [
 ];
 
 export const socials = [
-  { label: "GitHub", icon: "assets/icons/github.svg", href: "https://github.com/fairefriandi" },
-  { label: "LinkedIn", icon: "assets/icons/linkedin.svg", href: "https://linkedin.com/in/fairefriandi" },
-  { label: "X", icon: "assets/icons/x.svg", href: "https://x.com" },
-  { label: "Instagram", icon: "assets/icons/instagram.svg", href: "https://instagram.com" },
-  { label: "Discord", icon: "assets/icons/discord.svg", href: "https://discord.com" },
+  { label: "GitHub", icon: "assets/icons/github.svg", href: "https://github.com/FaiRefriandi" },
+  { label: "LinkedIn", icon: "assets/icons/linkedin.svg", href: "https://linkedin.com/fairefriandi" },
+  { label: "X", icon: "assets/icons/x.svg", href: "https://x.com/Mrphkt" },
+  { label: "Instagram", icon: "assets/icons/instagram.svg", href: "https://instagram.com/fairefr_" },
+  { label: "Discord", icon: "assets/icons/discord.svg", href: "https://discord.com/morphkite" },
   { label: "Facebook", icon: "assets/icons/facebook.svg", href: "https://facebook.com" },
 ];
