@@ -137,5 +137,5 @@ img {
   z-index: 100;
 }
 
-.page-bottom-gif { margin-bottom: 96px; }
-@media (max-width: 768px) { .page-bottom-gif { margin-bottom: 120px; } }
+.page-bottom-gif { margin-bottom: 24px; }
+@media (max-width: 768px) { .page-bottom-gif { margin-bottom: 24px; } }
