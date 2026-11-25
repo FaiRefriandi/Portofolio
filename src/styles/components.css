@@ -407,38 +407,12 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-7);
 }
-/* vertical dashed divider dead-center between the two columns, running the
-   full grid height straight through the horizontal row dividers */
-.cards::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  border-left: 1px dashed var(--semantic-stroke);
-  pointer-events: none;
-}
 @media (max-width: 800px) {
   .cards { grid-template-columns: 1fr; }
-  /* single column: no middle to divide */
-  .cards::after { display: none; }
   /* mobile cards stay compact (image + period + title only): description
      and tech chips appear inside the modal instead */
   .card .card__desc,
   .card .chips { display: none; }
-}
-/* continuous dashed divider between card rows: spans the full grid width
-   (grid-column 1/-1) so the line runs unbroken straight through the
-   column gap, rail to rail */
-.cards__divider {
-  grid-column: 1 / -1;
-  border-top: 1px dashed var(--semantic-stroke);
-  margin-top: var(--space-2);
-  height: 0;
-}
-@media (max-width: 800px) {
-  /* single column: no dividers at all on mobile */
-  .cards__divider { display: none; }
 }
 
 .card {

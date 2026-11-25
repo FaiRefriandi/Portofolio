@@ -30,7 +30,7 @@ export default function Hero() {
               </div>
               <FadeUp className="hero__subtitle" delay={0.15}>{profile.subtitle}</FadeUp>
               <FadeUp className="hero__about" delay={0.3}>
-                <h2>About me</h2>
+                <h2>about me.</h2>
                 <p>Zup! I'm Fai, a full-stack builder obsessed with autonomous agents, emerging tech, and turning caffeine into production code. I spend most of my compute experimenting with bleeding-edge architectures and shipping cool projects.</p>
               </FadeUp>
             </div>

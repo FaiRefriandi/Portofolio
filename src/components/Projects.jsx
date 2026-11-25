@@ -16,12 +16,11 @@ for (let i = 0; i < projects.length; i += COLS) rows.push(projects.slice(i, i + 
 export default function Projects({ onOpen }) {
   return (
     <section id="projects" className="section reveal">
-      <FadeUp tag="h2" inView>Projects</FadeUp>
+      <FadeUp tag="h2" inView>projects.</FadeUp>
 
       <div className="cards" role="list">
         {rows.map((row, ri) => (
           <Fragment key={ri}>
-            {ri > 0 && <div className="cards__divider" aria-hidden="true" />}
             {row.map((p) => (
               <article
                 key={p.title}

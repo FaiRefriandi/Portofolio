@@ -70,8 +70,8 @@ export default function App() {
 
       <main className="wrap" role="main">
         <FindMeAt />
-        <Projects onOpen={setActiveProject} />
         <GitHubHeatmap username={profile.github} />
+        <Projects onOpen={setActiveProject} />
       </main>
 
       <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto" }} />

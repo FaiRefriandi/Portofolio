@@ -4,7 +4,7 @@ import { FadeUp } from "./AnimatedText.jsx";
 export default function FindMeAt() {
   return (
     <section className="section reveal" aria-label="Find me at">
-      <FadeUp tag="h2" inView>find me at</FadeUp>
+      <FadeUp tag="h2" inView>find me at.</FadeUp>
 
       <div className="find-me-at__chips">
         {socials.map((s) => (
