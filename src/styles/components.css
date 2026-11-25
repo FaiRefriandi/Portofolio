@@ -86,7 +86,7 @@
   /* no card: no border, radius, background or shadow on the body itself.
      Only the top strip is glass, pulled up over the banner so the moving
      GIF shows through the liquid glass behind it. */
-  margin-top: -40px;
+  margin-top: -44px;
   background: transparent;
   border: 0;
 }
@@ -129,7 +129,7 @@
 }
 @media (max-width: 700px) {
   .hero__body {
-    margin-top: -32px;
+    margin-top: -36px;
   }
   .hero__inner {
     flex-direction: column;
@@ -149,7 +149,7 @@
 }
 .avatar {
   position: absolute;
-  top: -60px;                  /* half the avatar straddles the cover (Twitter-style cut) */
+  top: -64px;                  /* half the avatar straddles the cover (Twitter-style cut) */
   left: var(--space-8);        /* aligns with the inner content padding, i.e. the page column */
   width: 120px; height: 120px;
   border-radius: 50%;          /* Twitter-style circle */
@@ -167,7 +167,7 @@
 @media (max-width: 700px) {
   .avatar {
     width: 120px; height: 120px;
-    top: -60px;
+    top: -64px;
     left: var(--space-7);
     border-width: 3px;
   }
@@ -212,7 +212,7 @@
   min-height: 1.5em;
   display: block;
   margin-left: -0.4em;
-  transform: translateY(18%);
+  transform: translateY(calc(18% + 2px));
   will-change: transform;
   overflow: visible;
 }
