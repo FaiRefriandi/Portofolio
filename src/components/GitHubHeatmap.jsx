@@ -246,7 +246,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
 
   return (
     <div className={`gh-heatmap ${className}`} style={{ "--gh-cols": numCols }}>
-      <FadeUp tag="h2" inView>github stats, this is real btw!</FadeUp>
+      <FadeUp tag="h2" inView>github stats.</FadeUp>
       <div className="gh-heatmap__head">
         <span className="gh-heatmap__label">GitHub contributions</span>
         <span className="gh-heatmap__total">
@@ -318,11 +318,14 @@ export default function GitHubHeatmap({ username, className = "" }) {
       )}
 
       <div className="gh-heatmap__foot" aria-hidden="true">
-        <span>Less</span>
-        {[0, 1, 2, 3, 4].map((l) => (
-          <span key={l} className="gh-heatmap__swatch" style={{ opacity: LEVEL_OPACITY[l] }} />
-        ))}
-        <span>More</span>
+        <span className="gh-heatmap__real">this is real btw:)</span>
+        <span className="gh-heatmap__legend">
+          <span>Less</span>
+          {[0, 1, 2, 3, 4].map((l) => (
+            <span key={l} className="gh-heatmap__swatch" style={{ opacity: LEVEL_OPACITY[l] }} />
+          ))}
+          <span>More</span>
+        </span>
       </div>
     </div>
   );
