@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { FadeUp } from "./AnimatedText.jsx";
 // Bundled snapshot of the real contribution data (same-origin, so it renders
 // instantly and works even when the live API is blocked). This is user-specific
 // — refresh it periodically to keep the portfolio current.
@@ -245,7 +246,7 @@ export default function GitHubHeatmap({ username, className = "" }) {
 
   return (
     <div className={`gh-heatmap ${className}`} style={{ "--gh-cols": numCols }}>
-      <h2>This is real btw!</h2>
+      <FadeUp tag="h2" inView>This is real btw!</FadeUp>
       <div className="gh-heatmap__head">
         <span className="gh-heatmap__label">GitHub contributions</span>
         <span className="gh-heatmap__total">

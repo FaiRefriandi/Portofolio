@@ -1,4 +1,5 @@
 import { profile } from "../data.js";
+import { FadeUp, StaggerWords } from "./AnimatedText.jsx";
 
 export default function Hero() {
 
@@ -18,7 +19,7 @@ export default function Hero() {
             </div>
             <div className="hero__content">
               <div className="name-row">
-                <h1 className="hero__name">{profile.name}</h1>
+                <h1 className="hero__name"><StaggerWords text={profile.name} /></h1>
                 <dotlottie-player
                   src="assets/cat-white.lottie"
                   autoplay
@@ -27,11 +28,11 @@ export default function Hero() {
                   aria-hidden="true"
                 />
               </div>
-              <div className="hero__subtitle">{profile.subtitle}</div>
-              <div className="hero__about">
+              <FadeUp className="hero__subtitle" delay={0.15}>{profile.subtitle}</FadeUp>
+              <FadeUp className="hero__about" delay={0.3}>
                 <h2>About me</h2>
                 <p>Zup! I'm Fai, a full-stack builder obsessed with autonomous agents, emerging tech, and turning caffeine into production code. I spend most of my compute experimenting with bleeding-edge architectures and shipping cool projects.</p>
-              </div>
+              </FadeUp>
             </div>
           </div>
         </div>

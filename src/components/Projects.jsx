@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { projects } from "../data.js";
 import WindowDots from "./WindowDots.jsx";
+import { FadeUp } from "./AnimatedText.jsx";
 
 function hostOf(link) {
   try { return new URL(link).hostname.replace(/^www\./, ""); }
@@ -15,7 +16,7 @@ for (let i = 0; i < projects.length; i += COLS) rows.push(projects.slice(i, i + 
 export default function Projects({ onOpen }) {
   return (
     <section id="projects" className="section reveal">
-      <h2>Projects</h2>
+      <FadeUp tag="h2" inView>Projects</FadeUp>
 
       <div className="cards" role="list">
         {rows.map((row, ri) => (
