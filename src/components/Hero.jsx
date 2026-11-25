@@ -1,5 +1,4 @@
 import { profile } from "../data.js";
-import GitHubHeatmap from "./GitHubHeatmap.jsx";
 
 export default function Hero() {
 
@@ -30,10 +29,6 @@ export default function Hero() {
               </div>
               <div className="hero__subtitle">{profile.subtitle}</div>
             </div>
-          </div>
-
-          <div className="hero__heatmap">
-            <GitHubHeatmap username={profile.github} />
           </div>
         </div>
       </div>

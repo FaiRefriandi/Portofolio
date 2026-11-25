@@ -6,6 +6,9 @@ import Education from "./components/Education.jsx";
 import Contact from "./components/Contact.jsx";
 import Modal from "./components/Modal.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
+import GitHubHeatmap from "./components/GitHubHeatmap.jsx";
+import Footer from "./components/Footer.jsx";
+import { profile } from "./data.js";
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
@@ -71,7 +74,10 @@ export default function App() {
         <Projects onOpen={setActiveProject} />
         <Education />
         <Contact />
+        <GitHubHeatmap username={profile.github} />
       </main>
+
+      <Footer />
 
       <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto" }} />
 
