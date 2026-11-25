@@ -619,8 +619,11 @@
 .loading__hello { width: min(200px, 70vw); }
 
 /* Page footer. */
-.footer { padding: 64px var(--space-8) 48px; border-top: 1px dashed var(--semantic-stroke); text-align: center; }
-.footer__copy { margin: 16px 0 0; }
+.footer { padding: 32px var(--space-8) 48px; border-top: 1px solid var(--semantic-stroke); text-align: center; }
+.footer__copy { margin: 0; font-family: var(--font-family-stack); font-size: var(--font-size-xs); letter-spacing: 0.06em; color: var(--semantic-text-secondary); line-height: var(--font-line-height-base); }
+.footer__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; }
+.footer__links a { font-family: var(--font-family-stack); font-size: var(--font-size-xs); letter-spacing: 0.06em; color: var(--semantic-text-secondary); text-decoration: none; line-height: var(--font-line-height-base); }
+.footer__links a:hover { color: var(--semantic-text); }
 @media (prefers-reduced-motion: reduce) {
   .hello-effect__stroke { stroke-dashoffset: 0; animation: none; }
 }

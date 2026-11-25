@@ -1,0 +1,22 @@
+# Fai Refriandi
+
+> Portfolio of Fai Refriandi, a Fullstack & Android Mobile Developer based in Bandung, Indonesia. He works at Flowzup Studio and builds web and mobile products.
+
+## About
+
+Fai Refriandi is a Fullstack & Android Mobile Developer based in Bandung, Indonesia. He works at Flowzup Studio, where he works on Guepedia, and builds web and mobile products. This portfolio is a single page with an about section, social links, a live GitHub contribution graph, and selected projects.
+
+## Profiles
+
+- [GitHub](https://github.com/FaiRefriandi)
+- [LinkedIn](https://linkedin.com/fairefriandi)
+- [X](https://x.com/Mrphkt)
+- [Instagram](https://instagram.com/fairefr_)
+- [Discord](https://discord.com/users/494381974807379968)
+
+## Site files
+
+- [llms.txt](https://fr.is-a.dev/llms.txt)
+- [agent.md](https://fr.is-a.dev/agent.md)
+- [robots.txt](https://fr.is-a.dev/robots.txt)
+- [sitemap.xml](https://fr.is-a.dev/sitemap.xml)
