@@ -3,7 +3,6 @@ import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import Projects from "./components/Projects.jsx";
 import Education from "./components/Education.jsx";
-import Contact from "./components/Contact.jsx";
 import Modal from "./components/Modal.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import GitHubHeatmap from "./components/GitHubHeatmap.jsx";
@@ -72,7 +71,6 @@ export default function App() {
       <main className="wrap" role="main">
         <Projects onOpen={setActiveProject} />
         <Education />
-        <Contact />
         <GitHubHeatmap username={profile.github} />
       </main>
 
