@@ -3,7 +3,6 @@ export const profile = {
   subtitle: "Product-focused Developer",
   avatar: "assets/profile.gif",
   github: "fairefriandi",
-  availability: "Available for opportunities",
   location: "Bandung, Indonesia",
 };
 

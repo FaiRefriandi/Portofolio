@@ -18,6 +18,10 @@ export default function App() {
     };
     document.addEventListener("contextmenu", noImgMenu);
 
+    // Pengaman: kalau hello tidak pernah selesai, halaman tetap
+    // boleh masuk setelah 5 detik.
+    const loadFallback = setTimeout(() => document.body.classList.add("is-loaded"), 5000);
+
     const m = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (m.matches) {
       document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
@@ -47,6 +51,7 @@ export default function App() {
 
     return () => {
       cancelAnimationFrame(raf);
+      clearTimeout(loadFallback);
       io.disconnect();
       document.removeEventListener("contextmenu", noImgMenu);
     };

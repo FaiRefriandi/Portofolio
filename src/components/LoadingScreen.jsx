@@ -16,8 +16,15 @@ export default function LoadingScreen() {
   }, []);
 
   const handleComplete = useCallback(() => {
-    timersRef.current.push(setTimeout(() => setHidden(true), 450));
-    timersRef.current.push(setTimeout(() => setGone(true), 1000));
+    timersRef.current.push(
+      setTimeout(() => {
+        setHidden(true);
+        // Tandai halaman utama boleh masuk: konten .reveal mulai
+        // fade/slide-in tepat saat overlay hello memudar.
+        document.body.classList.add("is-loaded");
+      }, 200)
+    );
+    timersRef.current.push(setTimeout(() => setGone(true), 800));
   }, []);
 
   if (gone) return null;
@@ -25,7 +32,7 @@ export default function LoadingScreen() {
   return (
     <div className={`loading ${hidden ? "is-hidden" : ""}`} aria-hidden={hidden} aria-label="Loading">
       <div className="loading__inner" role="status" aria-live="polite" aria-atomic="true">
-        <HelloEffect className="loading__hello" onComplete={handleComplete} />
+        <HelloEffect className="loading__hello" speed={2} onComplete={handleComplete} />
       </div>
     </div>
   );
