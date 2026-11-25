@@ -678,21 +678,19 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
 .find-me-at__chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 12px;
 }
 .find-me-at__chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 14px;
+  gap: 6px;
+  padding: 6px 10px;
   border: 1px solid var(--semantic-stroke);
   border-radius: 999px;
   background: transparent;
   font-family: var(--font-family-stack);
   font-size: var(--font-size-sm);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--semantic-text);
   line-height: 1;
   text-decoration: none;
@@ -702,8 +700,8 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
   text-decoration: none;
 }
 .find-me-at__icon {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
   filter: brightness(0) invert(1);
 }
