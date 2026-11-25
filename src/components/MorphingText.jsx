@@ -14,7 +14,7 @@ import { useReducedMotion } from "framer-motion";
 import { usePageLoaded } from "./AnimatedText.jsx";
 
 const morphTime = 1.5;
-const cooldownTime = 0.5;
+const cooldownTime = 3;
 
 const useMorphingText = (texts, catRef) => {
   const textIndexRef = useRef(0);
