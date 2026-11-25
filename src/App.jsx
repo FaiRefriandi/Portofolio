@@ -70,7 +70,9 @@ export default function App() {
 
       <main className="wrap" role="main">
         <FindMeAt />
-        <GitHubHeatmap username={profile.github} />
+        <section className="section reveal">
+          <GitHubHeatmap username={profile.github} />
+        </section>
         <Projects onOpen={setActiveProject} />
       </main>
 

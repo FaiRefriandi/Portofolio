@@ -109,7 +109,7 @@
   gap: var(--space-8);
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: 60px var(--space-8) var(--space-8);
+  padding: 60px var(--space-8) 0;
 }
 /* Top-only glass over the bottom of the banner: plain CSS backdrop-filter
    reads the live page, so the moving GIF genuinely shows through. Same
@@ -139,7 +139,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-6);
-    padding: 62px var(--space-7) var(--space-7);
+    padding: 62px var(--space-7) 0;
   }
   .hero__body::before { height: 128px; }
 }
