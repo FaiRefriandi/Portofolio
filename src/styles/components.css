@@ -631,7 +631,7 @@
 .loading.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .loading__inner { width: min(420px, 90vw); display: grid; gap: 16px; justify-items: center; }
 
-/* Handwritten hello / "See ya!" stroke effect (HelloEffect.jsx): each
+/* Handwritten hello stroke effect (HelloEffect.jsx): each
    stroke is one SVG path with pathLength 1, drawn by animating
    stroke-dashoffset from 1 to 0 with its own delay, duration and easing
    from the --hello-effect-* custom properties set inline per stroke. */
@@ -642,11 +642,10 @@
   animation: hello-effect-draw var(--hello-effect-duration, 1s) var(--hello-effect-ease, ease-in-out) var(--hello-effect-delay, 0s) forwards;
 }
 @keyframes hello-effect-draw { to { stroke-dashoffset: 0; } }
-.loading__hello { width: min(320px, 80vw); }
+.loading__hello { width: min(200px, 70vw); }
 
-/* Page footer with the "See ya!" handwritten effect. */
+/* Page footer. */
 .footer { padding: 64px var(--space-8) 48px; border-top: 1px dashed var(--semantic-stroke); text-align: center; }
-.footer__seeya { width: min(420px, 90vw); margin: 0 auto; }
 .footer__copy { margin: 16px 0 0; }
 @media (prefers-reduced-motion: reduce) {
   .hello-effect__stroke { stroke-dashoffset: 0; animation: none; }
