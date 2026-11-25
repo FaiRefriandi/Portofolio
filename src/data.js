@@ -85,6 +85,6 @@ export const socials = [
   { label: "LinkedIn", icon: "assets/icons/linkedin.svg", href: "https://linkedin.com/fairefriandi" },
   { label: "X", icon: "assets/icons/x.svg", href: "https://x.com/Mrphkt" },
   { label: "Instagram", icon: "assets/icons/instagram.svg", href: "https://instagram.com/fairefr_" },
-  { label: "Discord", icon: "assets/icons/discord.svg", href: "https://discord.com/morphkite" },
+  { label: "Discord", icon: "assets/icons/discord.svg", href: "https://discord.com/users/494381974807379968" },
   { label: "Facebook", icon: "assets/icons/facebook.svg", href: "https://facebook.com" },
 ];
