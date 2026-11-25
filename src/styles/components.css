@@ -630,9 +630,27 @@
 }
 .loading.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .loading__inner { width: min(420px, 90vw); display: grid; gap: 16px; justify-items: center; }
-.loading__counter { font-family: var(--font-family-stack); font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--semantic-text); }
-.loading__bar { width: 100%; height: 2px; background: var(--semantic-stroke); border-radius: 999px; overflow: hidden; }
-.loading__progress { height: 100%; width: 0%; background: var(--semantic-text); border-radius: 999px; }
+
+/* Handwritten hello / "See ya!" stroke effect (HelloEffect.jsx): each
+   stroke is one SVG path with pathLength 1, drawn by animating
+   stroke-dashoffset from 1 to 0 with its own delay, duration and easing
+   from the --hello-effect-* custom properties set inline per stroke. */
+.hello-effect { display: block; width: 100%; height: auto; color: var(--semantic-text); }
+.hello-effect__stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hello-effect-draw var(--hello-effect-duration, 1s) var(--hello-effect-ease, ease-in-out) var(--hello-effect-delay, 0s) forwards;
+}
+@keyframes hello-effect-draw { to { stroke-dashoffset: 0; } }
+.loading__hello { width: min(320px, 80vw); }
+
+/* Page footer with the "See ya!" handwritten effect. */
+.footer { padding: 64px var(--space-8) 48px; border-top: 1px dashed var(--semantic-stroke); text-align: center; }
+.footer__seeya { width: min(420px, 90vw); margin: 0 auto; }
+.footer__copy { margin: 16px 0 0; }
+@media (prefers-reduced-motion: reduce) {
+  .hello-effect__stroke { stroke-dashoffset: 0; animation: none; }
+}
 
 .reveal { opacity: 0; transform: translateY(6px); transition: opacity 520ms var(--motion-ease), transform 520ms var(--motion-ease); }
 .reveal.is-in { opacity: 1; transform: none; }
@@ -652,6 +670,5 @@
   .brand { font-size: 16px; }
   .hero__name, .name-row { font-size: 20px; }
   .modal__title { font-size: 15px; }
-  .loading__counter { font-size: 22px; }
   .gh-heatmap__tip span { font-size: 11px; }
 }
