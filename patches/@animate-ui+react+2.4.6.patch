@@ -1,0 +1,34 @@
+diff --git a/node_modules/@animate-ui/react/dist/utils/motion/index.js b/node_modules/@animate-ui/react/dist/utils/motion/index.js
+index 6ec296d..75bbbaa 100644
+--- a/node_modules/@animate-ui/react/dist/utils/motion/index.js
++++ b/node_modules/@animate-ui/react/dist/utils/motion/index.js
+@@ -366,15 +366,15 @@ function scaleTransition(transition, tempo) {
+ 	return scaled;
+ }
+ function useTempoTransition(transition) {
+-	const { tempo } = React.use(MotionTokensContext);
++	const { tempo } = React.useContext(MotionTokensContext);
+ 	return scaleTransition(transition, tempo);
+ }
+ function useMotionTokens() {
+-	return React.use(MotionTokensContext);
++	return React.useContext(MotionTokensContext);
+ }
+ const CheckAnimationContext = React.createContext("draw");
+ function useCheckAnimation(own) {
+-	const inherited = React.use(CheckAnimationContext);
++	const inherited = React.useContext(CheckAnimationContext);
+ 	return own ?? inherited;
+ }
+ const CSS_EASINGS = {
+@@ -421,8 +421,8 @@ function toCssTiming(motionTransition) {
+ }
+ const ReducedMotionContext = React.createContext("user");
+ function useReducedMotionSetting() {
+-	const own = React.use(ReducedMotionContext);
+-	const { reducedMotion } = React.use(MotionConfigContext);
++	const own = React.useContext(ReducedMotionContext);
++	const { reducedMotion } = React.useContext(MotionConfigContext);
+ 	return reducedMotion === "always" ? "always" : own;
+ }
+ function ReducedMotionConfig({ children, remount }) {
