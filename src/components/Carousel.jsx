@@ -33,9 +33,26 @@ function Carousel({ orientation = "horizontal", opts, setApi, plugins, className
     const nodes = api.slideNodes();
     const count = nodes.length;
     if (!count) return;
-    const pos = api.scrollProgress() * (count - 1);
+    // Ukur posisi layar asli tiap slide terhadap tengah viewport.
+    // Ini selalu benar saat drag, saat berhenti, dan saat loop,
+    // tidak bergantung pada hitungan scrollProgress.
+    const viewport =
+      nodes[0] && nodes[0].parentElement && nodes[0].parentElement.parentElement;
+    if (viewport) {
+      const vpRect = viewport.getBoundingClientRect();
+      const center = vpRect.left + vpRect.width / 2;
+      nodes.forEach((node) => {
+        const r = node.getBoundingClientRect();
+        const nodeCenter = r.left + r.width / 2;
+        const dist = Math.abs(nodeCenter - center) / (r.width || 1);
+        const s = Math.pow(SCALE, Math.min(dist, 2));
+        node.style.setProperty("--slide-scale", s.toFixed(3));
+      });
+      return;
+    }
+    const sel = api.selectedScrollSnap();
     nodes.forEach((node, i) => {
-      let d = Math.abs(pos - i);
+      let d = Math.abs(sel - i);
       d = Math.min(d, count - d);
       const s = Math.pow(SCALE, Math.min(d, 2));
       node.style.setProperty("--slide-scale", s.toFixed(3));

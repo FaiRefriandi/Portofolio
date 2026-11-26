@@ -715,7 +715,7 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
 .pcarousel { position: relative; }
 .pcarousel__viewport { overflow: hidden; }
 .pcarousel__track { display: flex; gap: var(--space-7); }
-.pcarousel__slide { min-width: 0; flex: 0 0 72%; }
+.pcarousel__slide { min-width: 0; flex: 0 0 62%; }
 .pcarousel__slide-inner {
   transform: scale(var(--slide-scale, 1));
   transform-origin: center center;
