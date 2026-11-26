@@ -1,9 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import useEmblaCarousel, { CarouselDots } from "@animate-ui/react/primitives/carousel";
 
-// Carousel gaya Animate UI (Embla). Slide tetangga mengecil ke 0.8 seperti
-// demo animate-ui, slide aktif penuh. Style card tidak disentuh di sini.
-const SCALE = 0.8;
+// Carousel animate-ui asli (paket @animate-ui/react). Efek skala dan
+// penataan slide ditangani hook useEmblaCarousel mereka (opts scale/visible).
+// Style card tidak disentuh di sini.
+function cn(...args) {
+  return args.filter(Boolean).join(" ");
+}
 
 const CarouselContext = createContext(null);
 
@@ -28,47 +31,12 @@ function Carousel({ orientation = "horizontal", opts, setApi, plugins, className
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  const applyScale = useCallback(() => {
+  const onSelect = useCallback((api) => {
     if (!api) return;
-    const nodes = api.slideNodes();
-    const count = nodes.length;
-    if (!count) return;
-    // Ukur posisi layar asli tiap slide terhadap tengah viewport.
-    // Ini selalu benar saat drag, saat berhenti, dan saat loop,
-    // tidak bergantung pada hitungan scrollProgress.
-    const viewport =
-      nodes[0] && nodes[0].parentElement && nodes[0].parentElement.parentElement;
-    if (viewport) {
-      const vpRect = viewport.getBoundingClientRect();
-      const center = vpRect.left + vpRect.width / 2;
-      nodes.forEach((node) => {
-        const r = node.getBoundingClientRect();
-        const nodeCenter = r.left + r.width / 2;
-        const dist = Math.abs(nodeCenter - center) / (r.width || 1);
-        const s = Math.pow(SCALE, Math.min(dist, 2));
-        node.style.setProperty("--slide-scale", s.toFixed(3));
-      });
-      return;
-    }
-    const sel = api.selectedScrollSnap();
-    nodes.forEach((node, i) => {
-      let d = Math.abs(sel - i);
-      d = Math.min(d, count - d);
-      const s = Math.pow(SCALE, Math.min(d, 2));
-      node.style.setProperty("--slide-scale", s.toFixed(3));
-    });
-  }, [api]);
-
-  const onSelect = useCallback(
-    (api) => {
-      if (!api) return;
-      setCanScrollPrev(api.canScrollPrev());
-      setCanScrollNext(api.canScrollNext());
-      setSelectedIndex(api.selectedScrollSnap());
-      applyScale();
-    },
-    [applyScale]
-  );
+    setCanScrollPrev(api.canScrollPrev());
+    setCanScrollNext(api.canScrollNext());
+    setSelectedIndex(api.selectedScrollSnap());
+  }, []);
 
   const scrollPrev = useCallback(() => {
     if (api) api.scrollPrev();
@@ -108,13 +76,11 @@ function Carousel({ orientation = "horizontal", opts, setApi, plugins, className
     onSelect(api);
     api.on("reInit", onSelect);
     api.on("select", onSelect);
-    api.on("scroll", applyScale);
     return () => {
       api.off("reInit", onSelect);
       api.off("select", onSelect);
-      api.off("scroll", applyScale);
     };
-  }, [api, onSelect, applyScale]);
+  }, [api, onSelect]);
 
   return (
     <CarouselContext.Provider
@@ -134,9 +100,10 @@ function Carousel({ orientation = "horizontal", opts, setApi, plugins, className
     >
       <div
         onKeyDownCapture={handleKeyDown}
-        className={"pcarousel" + (className ? " " + className : "")}
+        className={cn("pcarousel", className)}
         role="region"
         aria-roledescription="carousel"
+        data-slot="carousel"
         {...props}
       >
         {children}
@@ -149,7 +116,7 @@ function CarouselContent({ className, children, ...props }) {
   const { carouselRef } = useCarousel();
   return (
     <div ref={carouselRef} className="pcarousel__viewport" data-slot="carousel-content">
-      <div className={"pcarousel__track" + (className ? " " + className : "")} {...props}>
+      <div className={cn("pcarousel__track", className)} {...props}>
         {children}
       </div>
     </div>
@@ -162,10 +129,10 @@ function CarouselItem({ className, children, ...props }) {
       role="group"
       aria-roledescription="slide"
       data-slot="carousel-item"
-      className={"pcarousel__slide" + (className ? " " + className : "")}
+      className={cn("pcarousel__slide", className)}
       {...props}
     >
-      <div className="pcarousel__slide-inner">{children}</div>
+      {children}
     </div>
   );
 }
@@ -177,7 +144,7 @@ function CarouselPrevious({ className, ...props }) {
       type="button"
       aria-label="Previous slide"
       data-slot="carousel-previous"
-      className={"pcarousel__arrow" + (className ? " " + className : "")}
+      className={cn("pcarousel__arrow", className)}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
@@ -194,7 +161,7 @@ function CarouselNext({ className, ...props }) {
       type="button"
       aria-label="Next slide"
       data-slot="carousel-next"
-      className={"pcarousel__arrow" + (className ? " " + className : "")}
+      className={cn("pcarousel__arrow", className)}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
@@ -204,28 +171,10 @@ function CarouselNext({ className, ...props }) {
   );
 }
 
-function CarouselDots({ className, ...props }) {
-  const { scrollSnaps, selectedIndex, scrollTo } = useCarousel();
-  return (
-    <div className={"pcarousel__dots" + (className ? " " + className : "")} {...props}>
-      {scrollSnaps.map((_, i) => (
-        <button
-          key={i}
-          type="button"
-          aria-label={"Go to slide " + (i + 1)}
-          aria-current={i === selectedIndex}
-          className={"pcarousel__dot" + (i === selectedIndex ? " is-active" : "")}
-          onClick={() => scrollTo(i)}
-        />
-      ))}
-    </div>
-  );
-}
-
 function CarouselCounter({ className, ...props }) {
   const { selectedIndex, scrollSnaps } = useCarousel();
   return (
-    <span className={"pcarousel__counter" + (className ? " " + className : "")} {...props}>
+    <span className={cn("pcarousel__counter", className)} {...props}>
       {selectedIndex + 1} / {scrollSnaps.length}
     </span>
   );
