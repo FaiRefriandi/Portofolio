@@ -137,5 +137,12 @@ img {
   z-index: 100;
 }
 
-.page-bottom-gif { margin-bottom: 24px; }
+.page-bottom-gif { margin-bottom: 24px; animation: page-bottom-gif-bob 3s ease-in-out infinite; }
+@keyframes page-bottom-gif-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-bottom-gif { animation: none; }
+}
 @media (max-width: 768px) { .page-bottom-gif { margin-bottom: 24px; } }
