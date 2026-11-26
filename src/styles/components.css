@@ -709,3 +709,51 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
   flex-shrink: 0;
   filter: brightness(0) invert(1);
 }
+
+/* Project carousel (animate-ui style, Embla). Card styles untouched:
+   .card, .card__media, .card__title dan kawan-kawan tidak diubah. */
+.pcarousel { position: relative; }
+.pcarousel__viewport { overflow: hidden; }
+.pcarousel__track { display: flex; gap: var(--space-7); }
+.pcarousel__slide { min-width: 0; flex: 0 0 72%; }
+.pcarousel__slide-inner {
+  transform: scale(var(--slide-scale, 1));
+  transform-origin: center center;
+  will-change: transform;
+}
+@media (max-width: 800px) {
+  .pcarousel__slide { flex-basis: 86%; }
+}
+.pcarousel__controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-top: var(--space-7);
+}
+.pcarousel__arrow {
+  appearance: none;
+  width: 32px; height: 32px; border-radius: 999px;
+  display: grid; place-items: center;
+  border: 1px solid var(--semantic-stroke-strong);
+  background: transparent;
+  color: var(--semantic-text);
+  font-size: 15px; line-height: 1;
+  cursor: pointer;
+}
+.pcarousel__arrow:hover { background: var(--semantic-bg-subtle); }
+.pcarousel__arrow:disabled { opacity: 0.4; cursor: not-allowed; }
+.pcarousel__dots { display: flex; align-items: center; gap: 8px; }
+.pcarousel__dot {
+  appearance: none;
+  width: 8px; height: 8px; border-radius: 999px;
+  border: 0; padding: 0;
+  background: var(--semantic-stroke-strong);
+  cursor: pointer;
+}
+.pcarousel__dot.is-active { background: var(--semantic-text); }
+.pcarousel__counter {
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.06em;
+  color: var(--semantic-text-secondary);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcarousel__slide-inner { transform: none; }
+}
