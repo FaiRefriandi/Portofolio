@@ -717,12 +717,8 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
 .pcarousel__track { display: flex; margin-left: calc(var(--space-7) * -1); }
 .pcarousel__slide { min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-left: var(--space-7); }
 /* Kartu di carousel: area card tetap transparan, tapi area teks diberi background
-   solid supaya teks kartu belakang tidak tembus ke depan. Kartu dikecilin lagi
-   supaya kartu belakang keliatan dikit di samping. */
-.pcarousel .card {
-  max-width: 80%;
-  margin-inline: auto;
-}
+   solid supaya teks kartu belakang tidak tembus ke depan. Card TIDAK dikecilin
+   lagi pakai max-width; peek kiri-kanan diatur lewat opsi visible carousel. */
 .pcarousel .card__body {
   background: var(--semantic-bg);
   border-radius: 12px;
