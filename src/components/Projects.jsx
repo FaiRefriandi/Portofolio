@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { projects } from "../data.js";
-import WindowDots from "./WindowDots.jsx";
 import { FadeUp } from "./AnimatedText.jsx";
 import {
   Carousel,
@@ -34,7 +33,7 @@ export default function Projects({ onOpen }) {
     <section id="projects" className="section reveal">
       <FadeUp tag="h2" inView>projects.</FadeUp>
 
-      <Carousel opts={{ loop: true, align: "center", containScroll: false, scale: 0.8, visible: 2 }}>
+      <Carousel opts={{ loop: true, align: "center", containScroll: false, scale: 0.7, visible: 2 }}>
         <CarouselContent>
           {projects.map((p) => (
             <CarouselItem key={p.title}>
@@ -50,10 +49,6 @@ export default function Projects({ onOpen }) {
                 }}
               >
                 <div className="card__media" aria-hidden="true">
-                  <div className="browser-bar">
-                    <WindowDots />
-                    <span className="browser-url">{hostOf(p.link) || "preview"}</span>
-                  </div>
                   <div className="imgbox"><img src={p.image} alt="" loading="lazy" draggable={false} /></div>
                 </div>
                 <div className="card__body">
