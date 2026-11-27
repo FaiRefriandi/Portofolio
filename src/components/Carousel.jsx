@@ -1,5 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import useEmblaCarousel, { CarouselDots } from "@animate-ui/react/primitives/carousel";
+import { ChevronLeft } from "./animate-ui/icons/chevron-left.jsx";
+import { ChevronRight } from "./animate-ui/icons/chevron-right.jsx";
 
 // Carousel animate-ui asli (paket @animate-ui/react). Efek skala dan
 // penataan slide ditangani hook useEmblaCarousel mereka (opts scale/visible).
@@ -149,7 +151,7 @@ function CarouselPrevious({ className, ...props }) {
       onClick={scrollPrev}
       {...props}
     >
-      <span aria-hidden="true">{"\u2190"}</span>
+      <ChevronLeft size={20} animateOnHover aria-hidden="true" />
     </button>
   );
 }
@@ -166,7 +168,7 @@ function CarouselNext({ className, ...props }) {
       onClick={scrollNext}
       {...props}
     >
-      <span aria-hidden="true">{"\u2192"}</span>
+      <ChevronRight size={20} animateOnHover aria-hidden="true" />
     </button>
   );
 }
