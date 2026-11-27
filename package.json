@@ -10,7 +10,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@animate-ui/react": "^2.4.6",
+    "@animate-ui/react": "2.4.6",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^14.14.0",
     "motion": "^14.14.0",
