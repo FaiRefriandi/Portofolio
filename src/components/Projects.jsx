@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { projects } from "../data.js";
+import WindowDots from "./WindowDots.jsx";
 import { FadeUp } from "./AnimatedText.jsx";
 import {
   Carousel,
@@ -49,6 +50,10 @@ export default function Projects({ onOpen }) {
                 }}
               >
                 <div className="card__media" aria-hidden="true">
+                  <div className="browser-bar">
+                    <WindowDots />
+                    <span className="browser-url">{hostOf(p.link) || "preview"}</span>
+                  </div>
                   <div className="imgbox"><img src={p.image} alt="" loading="lazy" draggable={false} /></div>
                 </div>
                 <div className="card__body">
