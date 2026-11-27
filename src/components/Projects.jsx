@@ -56,7 +56,7 @@ export default function Projects({ onOpen }) {
                   </div>
                   <div className="imgbox"><img src={p.image} alt="" loading="lazy" draggable={false} /></div>
                 </div>
-                <div>
+                <div className="card__body">
                   <div className="card__period">{p.period}</div>
                   <h3 className="card__title">{p.title}</h3>
                   <p className="card__desc">{p.description}</p>
