@@ -7,6 +7,7 @@ import LoadingScreen from "./components/LoadingScreen.jsx";
 import GitHubHeatmap from "./components/GitHubHeatmap.jsx";
 import FindMeAt from "./components/FindMeAt.jsx";
 import Footer from "./components/Footer.jsx";
+import LetsTalk from "./components/LetsTalk.jsx";
 import { profile } from "./data.js";
 
 export default function App() {
@@ -78,6 +79,8 @@ export default function App() {
       </main>
 
       <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto" }} />
+
+      <LetsTalk />
 
       <Footer />
 

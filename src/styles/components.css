@@ -376,6 +376,20 @@
   display: block;
   margin-left: 2px;
   transform: translateX(-19px) translateY(calc(18% + 1px));
+.lets-talk { text-align: center; }
+.lets-talk h2 {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-family-stack);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.lets-talk p {
+  margin: 0 0 var(--space-6);
+  color: var(--semantic-text-secondary);
+}
+.lets-talk .btn { text-transform: none; letter-spacing: 0; }
+
   will-change: transform;
   overflow: visible;
 }
