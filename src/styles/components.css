@@ -716,6 +716,15 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
 .pcarousel__viewport { overflow: hidden; }
 .pcarousel__track { display: flex; margin-left: calc(var(--space-7) * -1); }
 .pcarousel__slide { min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-left: var(--space-7); }
+/* Kartu di carousel: background solid supaya teks kartu belakang tidak tembus
+   ke depan saat kartu samping di-peek dan saat swap, dan kartu sedikit lebih
+   kecil dari lebar viewport. Hover tetap pakai warna subtle, tetap solid. */
+.pcarousel .card {
+  background: var(--semantic-bg);
+  max-width: 94%;
+  margin-inline: auto;
+}
+.pcarousel .card:hover { background: var(--semantic-bg-subtle); }
 .pcarousel__controls {
   display: flex; align-items: center; justify-content: center;
   gap: 16px; margin-top: var(--space-7);
