@@ -18,6 +18,16 @@ export const projects = [
     caption: "Preview",
   },
   {
+    title: "QRCBN Market",
+    period: "2026",
+    image: "assets/qrcbn-market.webp",
+    link: "https://play.google.com/store/apps/details?id=com.MediaGroup.QrcbnMarket&hl=id",
+    description:
+      "QRCBN Market is a digital book marketplace that connects readers with a diverse collection of books through a simple and modern reading experience.",
+    tech: [],
+    caption: "Preview",
+  },
+  {
     title: "Flowzup Social App",
     period: "2026",
     image: "assets/project_7.jpg",
