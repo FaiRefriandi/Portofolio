@@ -8,22 +8,22 @@ export const profile = {
 
 export const projects = [
   {
-    title: "Guepedia - Online Bookstore",
-    period: "2026",
-    image: "assets/guepedia.png",
-    link: "https://www.guepedia.com",
-    description:
-      "Guepedia is an online book marketplace that connects readers with a diverse collection of books while supporting authors through a modern digital publishing ecosystem.",
-    tech: [],
-    caption: "Preview",
-  },
-  {
     title: "QRCBN Market",
     period: "2026",
     image: "assets/qrcbn-market.webp",
     link: "https://play.google.com/store/apps/details?id=com.MediaGroup.QrcbnMarket&hl=id",
     description:
       "QRCBN Market is a digital book marketplace that connects readers with a diverse collection of books through a simple and modern reading experience.",
+    tech: [],
+    caption: "Preview",
+  },
+  {
+    title: "Guepedia - Online Bookstore",
+    period: "2026",
+    image: "assets/guepedia.png",
+    link: "https://www.guepedia.com",
+    description:
+      "Guepedia is an online book marketplace that connects readers with a diverse collection of books while supporting authors through a modern digital publishing ecosystem.",
     tech: [],
     caption: "Preview",
   },
