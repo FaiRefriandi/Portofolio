@@ -376,7 +376,7 @@
   display: block;
   margin-left: 2px;
   transform: translateX(-19px) translateY(calc(18% + 1px));
-.lets-talk { text-align: center; }
+.lets-talk { text-align: center; margin-bottom: var(--section-gap); }
 .lets-talk h2 {
   margin: 0 0 var(--space-4);
   font-family: var(--font-family-stack);
