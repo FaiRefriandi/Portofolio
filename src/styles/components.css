@@ -732,6 +732,9 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
 }
 .pcarousel__arrow:hover { background: var(--semantic-bg-subtle); }
 .pcarousel__arrow:disabled { opacity: 0.4; cursor: not-allowed; }
+.pcarousel__arrow svg { transition: transform 0.3s ease; }
+.pcarousel__arrow[data-slot="carousel-previous"]:hover svg { transform: translateX(-4px); }
+.pcarousel__arrow[data-slot="carousel-next"]:hover svg { transform: translateX(4px); }
 .pcarousel__dots { display: flex; align-items: center; gap: 8px; }
 .pcarousel__dot {
   appearance: none;

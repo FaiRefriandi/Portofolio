@@ -1,46 +1,12 @@
-'use client';
-
-import * as React from 'react';
-import { motion } from 'motion/react';
-
-import {
-  getVariants,
-  useAnimateIconContext,
-  IconWrapper,
-} from '@animate-ui/react/icons';
-
-const animations = {
-  default: {
-    path: {
-      initial: {
-        x: 0,
-        transition: { duration: 0.3, ease: 'easeInOut' },
-      },
-      animate: {
-        x: -4,
-        transition: { duration: 0.3, ease: 'easeInOut' },
-      },
-    },
-  },
-  'default-loop': {
-    path: {
-      initial: {
-        x: 0,
-      },
-      animate: {
-        x: [0, -4, 0],
-        transition: { duration: 0.6, ease: 'easeInOut' },
-      },
-    },
-  },
-};
-
-function IconComponent({ size, ...props }) {
-  const { controls } = useAnimateIconContext();
-  const variants = getVariants(animations);
-
+// Chevron kiri polos, tanpa @animate-ui/react/icons.
+// IconWrapper di paket itu me-render AnimateIconContext langsung sebagai
+// komponen (<AnimateIconContext value={...}>), fitur React 19. Di React 18
+// itu diperlakukan sebagai Consumer yang memanggil children sebagai fungsi,
+// padahal children-nya elemen React, jadi render crash ("r is not a function")
+// dan halaman blank. SVG polos + animasi hover via CSS (components.css).
+function ChevronLeft({ size = 20, className, animateOnHover, ...props }) {
   return (
-    <motion.svg
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
@@ -50,20 +16,12 @@ function IconComponent({ size, ...props }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={className}
       {...props}
     >
-      <motion.path
-        d="m15 18-6-6 6-6"
-        variants={variants.path}
-        initial="initial"
-        animate={controls}
-      />
-    </motion.svg>
+      <path d="m15 18-6-6 6-6" />
+    </svg>
   );
 }
 
-function ChevronLeft(props) {
-  return <IconWrapper icon={IconComponent} {...props} />;
-}
-
-export { animations, ChevronLeft, ChevronLeft as ChevronLeftIcon };
+export { ChevronLeft, ChevronLeft as ChevronLeftIcon };
