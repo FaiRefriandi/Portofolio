@@ -34,7 +34,7 @@ export default function Projects({ onOpen }) {
     <section id="projects" className="section reveal">
       <FadeUp tag="h2" inView>projects.</FadeUp>
 
-      <Carousel opts={{ loop: true, align: "center", containScroll: false, scale: 0.5, visible: 2 }}>
+      <Carousel opts={{ loop: true, align: "center", containScroll: false, scale: 0.3, visible: 2 }}>
         <CarouselContent>
           {projects.map((p) => (
             <CarouselItem key={p.title}>
