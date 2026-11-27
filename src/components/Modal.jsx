@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SquareArrowOutUpRight } from "./animate-ui/icons/square-arrow-out-up-right.jsx";
 
 // Unmount delay for the exit transition in components.css (.modal__panel,
 // .modal__backdrop — 260ms), plus a little slack so the fade-out is never
@@ -76,7 +77,7 @@ export default function Modal({ project, onClose }) {
             {shown.link ? (
               <div style={{ marginTop: 16 }}>
                 <a href={shown.link} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
-                  View Project →
+                  View Project <SquareArrowOutUpRight size={16} aria-hidden="true" />
                 </a>
               </div>
             ) : null}

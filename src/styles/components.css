@@ -39,20 +39,23 @@
 
 .btn {
   appearance: none;
+  display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-family-stack);
-  font-size: var(--font-size-sm); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm); letter-spacing: 0; line-height: 1;
+  padding: 12px 20px;
+  border-radius: 999px;
   border: 1px solid var(--semantic-stroke-strong);
   background: var(--semantic-bg);
   color: var(--semantic-text);
+  text-decoration: none;
   cursor: pointer;
 }
-.btn:hover { background: var(--semantic-bg-subtle); }
+.btn:hover { background: var(--semantic-bg-subtle); text-decoration: none; }
 .btn:active { opacity: 0.9; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn--primary { background: var(--semantic-text); color: var(--semantic-bg); border-color: var(--semantic-text); }
-.btn--primary:hover { opacity: 0.92; }
+.btn--primary:hover { background: var(--semantic-text); color: var(--semantic-bg); opacity: 0.92; }
+.btn--primary:active { background: var(--semantic-text); color: var(--semantic-bg); opacity: 0.85; }
 .btn--ghost { background: transparent; }
 
 .hero {
@@ -376,7 +379,7 @@
   display: block;
   margin-left: 2px;
   transform: translateX(-19px) translateY(calc(18% + 1px));
-.lets-talk { text-align: center; margin-bottom: var(--section-gap); }
+.lets-talk { text-align: center; margin-bottom: calc(var(--section-gap) + 20px); }
 .lets-talk h2 {
   margin: 0 0 var(--space-4);
   font-family: var(--font-family-stack);
@@ -388,7 +391,6 @@
   margin: 0 0 var(--space-6);
   color: var(--semantic-text-secondary);
 }
-.lets-talk .btn { text-transform: none; letter-spacing: 0; }
 
   will-change: transform;
   overflow: visible;
