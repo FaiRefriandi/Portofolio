@@ -375,7 +375,7 @@
   height: clamp(39px, 6.75vw, 60px);
   display: block;
   margin-left: 2px;
-  transform: translateX(-14px) translateY(calc(18% + 1px));
+  transform: translateX(-17px) translateY(calc(18% + 1px));
   will-change: transform;
   overflow: visible;
 }

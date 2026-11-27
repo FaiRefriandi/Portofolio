@@ -8,6 +8,16 @@ export const profile = {
 
 export const projects = [
   {
+    title: "Guepedia - Online Bookstore",
+    period: "2026",
+    image: "assets/guepedia.png",
+    link: "https://www.guepedia.com",
+    description:
+      "Guepedia is an online book marketplace that connects readers with a diverse collection of books while supporting authors through a modern digital publishing ecosystem.",
+    tech: [],
+    caption: "Preview",
+  },
+  {
     title: "Flowzup Social App",
     period: "2026",
     image: "assets/project_7.jpg",
