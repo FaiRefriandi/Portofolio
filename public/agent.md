@@ -24,7 +24,7 @@ This file is the portfolio, written for agents. Prefer it over scraping the HTML
 
 ## About
 
-Fai is a product-focused developer building Android apps in Kotlin and modern websites in React, JavaScript, and TypeScript. He works on real products for real users: a social app, an AI Quran tafsir assistant, an air quality tracker for his city, and landing pages for local businesses. He runs Flowzup Studio as independent work and works at Guepedia as his day job. The site is a single-page Vite + React app, designed and shipped from Bandung.
+Fai is a product-focused developer building Android apps in Kotlin and modern websites in React, JavaScript, and TypeScript. He works on real products for real users: an online book marketplace, a social app, an AI Quran tafsir assistant, an air quality tracker for his city, and event websites. He runs Flowzup Studio as independent work and works at Guepedia as his day job. The site is a single-page Vite + React app, designed and shipped from Bandung.
 
 ## Rules
 
@@ -68,6 +68,26 @@ Kotlin and Android SDK for mobile, with XML and Firebase. React, JavaScript, and
 
 ## Projects
 
+### QRCBN Market
+
+- URL: https://play.google.com/store/apps/details?id=com.MediaGroup.QrcbnMarket&hl=id
+- Status: completed (2026)
+- Links: live https://play.google.com/store/apps/details?id=com.MediaGroup.QrcbnMarket&hl=id
+
+QRCBN Market is a digital book marketplace that connects readers with a diverse collection of books through a simple and modern reading experience.
+
+Problem: Readers need one place to discover and read a diverse collection of books. QRCBN Market puts the collection in one app with a simple and modern reading experience.
+
+### Guepedia - Online Bookstore
+
+- URL: https://www.guepedia.com
+- Status: completed (2026)
+- Links: live https://www.guepedia.com
+
+Guepedia is an online book marketplace that connects readers with a diverse collection of books while supporting authors through a modern digital publishing ecosystem.
+
+Problem: Readers and authors need one marketplace that connects both sides. Guepedia connects readers with a diverse collection of books while supporting authors through a modern digital publishing ecosystem.
+
 ### Flowzup Social App
 
 - URL: https://github.com/FaiRefriandi/Flowzup-SocialApp
@@ -79,16 +99,6 @@ Flowzup is a mobile app prototype built as a social platform. It combines social
 
 Problem: Social platforms are fragmented and rarely ship with AI built in. Flowzup prototypes a social app that combines social media with AI and Web3 in one place.
 
-### Tam's AC Mobil Bandung Landing Page
-
-- URL: https://tamsac.vercel.app/
-- Status: completed (2025)
-- Stack: React.js, TypeScript, Tailwind CSS
-- Links: live https://tamsac.vercel.app/
-
-Landing page website for Tam's AC Mobil Bandung, built with Search Engine Optimization (SEO) to help stakeholders find information about car AC repair services in Bandung.
-
-Problem: A car AC repair shop in Bandung needed to be found online. The landing page uses SEO so customers searching for car AC repair in Bandung can find the service, its details, and how to reach it.
 
 ### Victory National Open Taekwondo Championship
 
