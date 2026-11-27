@@ -18,16 +18,6 @@ export const projects = [
     caption: "Preview",
   },
   {
-    title: "Tam's AC Mobil Bandung Landing Page",
-    period: "2025",
-    image: "assets/project_6.png",
-    link: "https://tamsac.vercel.app/",
-    description:
-      "Landing page website for Tam's AC Mobil Bandung, built with Search Engine Optimization (SEO) to help stakeholders find information about car AC repair services in Bandung.",
-    tech: ["React.js", "TypeScript", "Tailwind CSS"],
-    caption: "Preview",
-  },
-  {
     title: "Victory National Open Taekwondo Championship",
     period: "2025",
     image: "assets/project_2.png",

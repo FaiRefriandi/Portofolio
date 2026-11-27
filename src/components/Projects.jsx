@@ -54,7 +54,7 @@ export default function Projects({ onOpen }) {
                     <WindowDots />
                     <span className="browser-url">{hostOf(p.link) || "preview"}</span>
                   </div>
-                  <div className="imgbox"><img src={p.image} alt="" loading="lazy" draggable={false} /></div>
+                  <div className="imgbox"><img src={p.image} alt="" loading="lazy" decoding="async" draggable={false} /></div>
                 </div>
                 <div className="card__body">
                   <div className="card__period">{p.period}</div>
