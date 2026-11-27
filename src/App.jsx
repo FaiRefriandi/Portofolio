@@ -78,9 +78,9 @@ export default function App() {
         <Projects onOpen={setActiveProject} />
       </main>
 
-      <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto" }} />
-
       <LetsTalk />
+
+      <img className="page-bottom-gif" src="assets/devault-ascii.gif" alt="" aria-hidden="true" loading="lazy" draggable={false} style={{ display: "block", width: "100%", height: "auto" }} />
 
       <Footer />
 

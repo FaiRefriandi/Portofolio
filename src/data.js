@@ -20,7 +20,7 @@ export const projects = [
   {
     title: "Guepedia - Online Bookstore",
     period: "2026",
-    image: "assets/guepedia.png",
+    image: "assets/guepedia.webp",
     link: "https://www.guepedia.com",
     description:
       "Guepedia is an online book marketplace that connects readers with a diverse collection of books while supporting authors through a modern digital publishing ecosystem.",
