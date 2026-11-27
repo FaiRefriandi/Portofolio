@@ -720,7 +720,7 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
    solid supaya teks kartu belakang tidak tembus ke depan. Kartu dikecilin lagi
    supaya kartu belakang keliatan dikit di samping. */
 .pcarousel .card {
-  max-width: 90%;
+  max-width: 80%;
   margin-inline: auto;
 }
 .pcarousel .card__body {
@@ -744,9 +744,18 @@ body.is-loaded .reveal.is-in { opacity: 1; transform: none; }
 }
 .pcarousel__arrow:hover { background: var(--semantic-bg-subtle); }
 .pcarousel__arrow:disabled { opacity: 0.4; cursor: not-allowed; }
-.pcarousel__arrow svg { transition: transform 0.3s ease; }
-.pcarousel__arrow[data-slot="carousel-previous"]:hover svg { transform: translateX(-4px); }
-.pcarousel__arrow[data-slot="carousel-next"]:hover svg { transform: translateX(4px); }
+/* Chevron bergerak pelan ke kiri dan kanan terus-menerus supaya kelihatan
+   bisa di-klik. Gerakan kecil (4px) dan lambat (2.4s) biar tidak mengganggu. */
+@keyframes pcarousel-nudge-left {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+}
+@keyframes pcarousel-nudge-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+.pcarousel__arrow[data-slot="carousel-previous"] svg { animation: pcarousel-nudge-left 2.4s ease-in-out infinite; }
+.pcarousel__arrow[data-slot="carousel-next"] svg { animation: pcarousel-nudge-right 2.4s ease-in-out infinite; }
 .pcarousel__dots { display: flex; align-items: center; gap: 8px; }
 .pcarousel__dot {
   appearance: none;
