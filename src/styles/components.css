@@ -379,6 +379,10 @@
   display: block;
   margin-left: 2px;
   transform: translateX(-19px) translateY(calc(18% + 1px));
+  will-change: transform;
+  overflow: visible;
+}
+
 .lets-talk { text-align: center; margin-bottom: calc(var(--section-gap) + 20px); }
 .lets-talk .btn { font-weight: 700; }
 .lets-talk h2 {
@@ -391,10 +395,6 @@
 .lets-talk p {
   margin: 0 0 var(--space-6);
   color: var(--semantic-text-secondary);
-}
-
-  will-change: transform;
-  overflow: visible;
 }
 .gh-heatmap__swatch { width: 9px; height: 9px; border-radius: 2px; background: #e8e8e8; }
 
