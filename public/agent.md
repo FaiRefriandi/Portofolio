@@ -70,11 +70,11 @@ Kotlin and Android SDK for mobile, with XML and Firebase. React, JavaScript, and
 
 ### Mojikeun
 
-- URL: https://mojikeun-morphkite-projects.vercel.app
+- URL: https://mojikeun.vercel.app
 - Status: completed (2026)
-- Links: live https://mojikeun-morphkite-projects.vercel.app
+- Links: live https://mojikeun.vercel.app
 
-Turn your idea in A pixel emoji generator from text descriptions, with the AI model running right in the browser.
+A pixel emoji generator from text descriptions, with the AI model running right in the browser.
 
 Problem: Turning a text idea into a pixel emoji takes design skill and time. Mojikeun generates the emoji from a text description, with the AI model running right in the browser.
 

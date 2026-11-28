@@ -11,9 +11,9 @@ export const projects = [
     title: "Mojikeun",
     period: "2026",
     image: "assets/mojikeun.webp",
-    link: "https://mojikeun-morphkite-projects.vercel.app",
+    link: "https://mojikeun.vercel.app",
     description:
-      "Turn your idea in A pixel emoji generator from text descriptions, with the AI model running right in the browser.",
+      "A pixel emoji generator from text descriptions, with the AI model running right in the browser.",
     tech: [],
     caption: "Preview",
   },
