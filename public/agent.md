@@ -24,7 +24,7 @@ This file is the portfolio, written for agents. Prefer it over scraping the HTML
 
 ## About
 
-Fai is a product-focused developer building Android apps in Kotlin and modern websites in React, JavaScript, and TypeScript. He works on real products for real users: an online book marketplace, a social app, an AI Quran tafsir assistant, an air quality tracker for his city, and event websites. He runs Flowzup Studio as independent work and works at Guepedia as his day job. The site is a single-page Vite + React app, designed and shipped from Bandung.
+Fai is a product-focused developer building Android apps in Kotlin and modern websites in React, JavaScript, and TypeScript. He works on real products for real users: an online book marketplace, a social app, an AI Quran tafsir assistant, an air quality tracker for his city, a pixel emoji generator, and event websites. He runs Flowzup Studio as independent work and works at Guepedia as his day job. The site is a single-page Vite + React app, designed and shipped from Bandung.
 
 ## Rules
 
@@ -67,6 +67,16 @@ Kotlin and Android SDK for mobile, with XML and Firebase. React, JavaScript, and
 - Work: Flowzup 1, an AI chatbot service for Indonesian small businesses, and the Flowzup Social App.
 
 ## Projects
+
+### Mojikeun
+
+- URL: https://mojikeun-morphkite-projects.vercel.app
+- Status: completed (2026)
+- Links: live https://mojikeun-morphkite-projects.vercel.app
+
+Turn your idea in A pixel emoji generator from text descriptions, with the AI model running right in the browser.
+
+Problem: Turning a text idea into a pixel emoji takes design skill and time. Mojikeun generates the emoji from a text description, with the AI model running right in the browser.
 
 ### QRCBN Market
 
